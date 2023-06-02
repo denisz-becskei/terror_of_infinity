@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AssignHavenLightColors : MonoBehaviour
+public class AssignChromaticLightColors : MonoBehaviour
 {
     public int color;
 
