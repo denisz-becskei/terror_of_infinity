@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnRandomDoor : MonoBehaviour
@@ -12,6 +10,4 @@ public class SpawnRandomDoor : MonoBehaviour
         door.transform.localScale = new Vector3(0.29f, 0.31f, 4.89f);
         door.transform.localPosition = new Vector3(0, -1.15f, 0);
     }
-
-
 }
