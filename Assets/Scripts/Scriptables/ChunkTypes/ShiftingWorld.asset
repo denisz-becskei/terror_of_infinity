@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c69a3ce3b54e64c9a90c12055fc5ac, type: 3}
+  m_Name: ShiftingWorld
+  m_EditorClassIdentifier: 
+  chunkType: 11
+  ranges: {x: 0, y: 0.5, z: 0.3, w: 0.4}
+  roomPrefabs:
+  - {fileID: 4837790218605412414, guid: 8d4d1bd4944ffa446a12d36ccd21cc40, type: 3}
+  - {fileID: 4837790218605412414, guid: 8bb8564b9070af94ab3cd23fbadf56a1, type: 3}
+  - {fileID: 4837790218605412414, guid: 6b8ba95d91664dc44b8eab0dc2e276f0, type: 3}
+  - {fileID: 4837790218605412414, guid: c143ed60aeeb63f4b9995741672c34e9, type: 3}
+  emptyRoomPrefab: {fileID: 4837790218605412414, guid: 8d4d1bd4944ffa446a12d36ccd21cc40,
+    type: 3}
+  lightPrefab: {fileID: 608865601087118314, guid: 6c55f46db66c0244b89b0e53f9ce87c1,
+    type: 3}
+  mapBrightness: 2
+  mapEmptiness: 3

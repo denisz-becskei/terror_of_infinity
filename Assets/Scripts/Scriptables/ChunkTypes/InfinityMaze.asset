@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c69a3ce3b54e64c9a90c12055fc5ac, type: 3}
+  m_Name: InfinityMaze
+  m_EditorClassIdentifier: 
+  chunkType: 10
+  ranges: {x: 0.8, y: 1, z: 0.8, w: 0.9}
+  roomPrefabs:
+  - {fileID: 4837790218605412414, guid: 6334efd828603dc4487a34242c174bb7, type: 3}
+  - {fileID: 4837790218605412414, guid: bfcc36739930b2b43857d732a1ca437e, type: 3}
+  - {fileID: 4837790218605412414, guid: dc43f4e57675ab446b3d13cae702b82d, type: 3}
+  - {fileID: 4837790218605412414, guid: e98aa8ae130db5743bf36113f355ce2b, type: 3}
+  emptyRoomPrefab: {fileID: 0}
+  lightPrefab: {fileID: 4837790218605412414, guid: 9ee2778d7f8a5444eb1d4ecbc5edc4a2,
+    type: 3}
+  mapBrightness: 2
+  mapEmptiness: 0

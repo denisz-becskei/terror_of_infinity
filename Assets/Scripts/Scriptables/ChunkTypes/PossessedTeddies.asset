@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c69a3ce3b54e64c9a90c12055fc5ac, type: 3}
+  m_Name: PossessedTeddies
+  m_EditorClassIdentifier: 
+  chunkType: 7
+  ranges: {x: 0.5, y: 1, z: 0.1, w: 0.2}
+  roomPrefabs:
+  - {fileID: 4837790218605412414, guid: 27e2f8b7bee684144ba50deb58cee9c1, type: 3}
+  - {fileID: 4837790218605412414, guid: a65ec291d49b49d4085b522d818dfe86, type: 3}
+  - {fileID: 4837790218605412414, guid: ad1aa30abd201af45bde153fdcc3661f, type: 3}
+  - {fileID: 4837790218605412414, guid: 968035319da35fe4faa04e095255fdca, type: 3}
+  - {fileID: 4837790218605412414, guid: b708c39bd5df1f8499130ba73048f585, type: 3}
+  - {fileID: 4837790218605412414, guid: 65c01bba89d038f4fa5ce78ac61b5ea7, type: 3}
+  emptyRoomPrefab: {fileID: 4837790218605412414, guid: 02702f4bc3d5eb148b08fe652476f5d2,
+    type: 3}
+  lightPrefab: {fileID: 0}
+  mapBrightness: 8
+  mapEmptiness: 7

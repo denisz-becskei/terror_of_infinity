@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c69a3ce3b54e64c9a90c12055fc5ac, type: 3}
+  m_Name: GateToReality
+  m_EditorClassIdentifier: 
+  chunkType: 14
+  ranges: {x: 0.8, y: 1, z: 0.3, w: 0.4}
+  roomPrefabs: []
+  emptyRoomPrefab: {fileID: 4837790218605412414, guid: 67f49c45e062f0746a4b5074185e61a3,
+    type: 3}
+  lightPrefab: {fileID: 4837790218605412414, guid: 79c37682a33907b4e88ce39e95089e97,
+    type: 3}
+  mapBrightness: 1
+  mapEmptiness: 10

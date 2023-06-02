@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d16156bba1a1c74ba35df07239d33c1, type: 3}
+  m_Name: LITTLE GIRL
+  m_EditorClassIdentifier: 
+  agentType: LITTLE GIRL
+  agentPrefab: {fileID: 0}
+  agentSpeed: 4
+  boostedAgentSpeedPercentage: 1
+  huntChance:
+  - 10
+  - 10
+  huntDuration:
+  - 5
+  - 30
+  difficultyRange:
+  - 0.1
+  - 0.2
+  specialBehavior: 0

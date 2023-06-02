@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c69a3ce3b54e64c9a90c12055fc5ac, type: 3}
+  m_Name: EntangledDarkness
+  m_EditorClassIdentifier: 
+  chunkType: 2
+  ranges: {x: 0.3, y: 0.7, z: 0, w: 0.1}
+  roomPrefabs:
+  - {fileID: 4837790218605412414, guid: 6bb78d47781e18f449667b6222a07c14, type: 3}
+  - {fileID: 4837790218605412414, guid: 3324ca36dce857c49b41288f5ba230b6, type: 3}
+  - {fileID: 4837790218605412414, guid: c96c3b8c8f39388488d837b492d0a2f0, type: 3}
+  - {fileID: 4837790218605412414, guid: 1879df51396135f4c962c52dc4bd27d9, type: 3}
+  - {fileID: 4837790218605412414, guid: cc6bfd8f8496c2643805664eb2fcb2f3, type: 3}
+  - {fileID: 4837790218605412414, guid: 645b8cf7f697f73449204a57b482becc, type: 3}
+  - {fileID: 4837790218605412414, guid: 59b8acac50617f842a5cf22075e81cb7, type: 3}
+  - {fileID: 4837790218605412414, guid: e4441ac750c67434aae01402ee7255e6, type: 3}
+  emptyRoomPrefab: {fileID: 4837790218605412414, guid: d8e512b2c5cf6ce4483e8387aaef4cd9,
+    type: 3}
+  lightPrefab: {fileID: 4837790218605412414, guid: a0db87ae2e6aaf84b809dbc6a5da9d52,
+    type: 3}
+  mapBrightness: 16
+  mapEmptiness: 1

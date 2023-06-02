@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c69a3ce3b54e64c9a90c12055fc5ac, type: 3}
+  m_Name: ColdForest
+  m_EditorClassIdentifier: 
+  chunkType: 6
+  ranges: {x: 0.3, y: 1, z: 0.4, w: 0.5}
+  roomPrefabs:
+  - {fileID: 4837790218605412414, guid: a8bb7d3425f9fc54396dc29a300f3557, type: 3}
+  - {fileID: 4837790218605412414, guid: c8a3331ddcf95d64a8259f121a211c7c, type: 3}
+  - {fileID: 4837790218605412414, guid: 815ebf5ad22f9eb4ea5a6771b962c3b7, type: 3}
+  - {fileID: 4837790218605412414, guid: 4f3abc9b7923f9c448aadf909653dcbc, type: 3}
+  - {fileID: 4837790218605412414, guid: 83d30fce0814dc24d9b39afb1cbbfe0f, type: 3}
+  - {fileID: 4837790218605412414, guid: 110cad551f70b7f47b7ea2256c961cbe, type: 3}
+  - {fileID: 4837790218605412414, guid: e8fc7d520c5900c4e8dae8824f204e5e, type: 3}
+  emptyRoomPrefab: {fileID: 4837790218605412414, guid: 2ff9dfe18863034459bb214846c518f3,
+    type: 3}
+  lightPrefab: {fileID: 4837790218605412414, guid: 7c026b21eaa5e104f992a2e86750d361,
+    type: 3}
+  mapBrightness: 7
+  mapEmptiness: 12

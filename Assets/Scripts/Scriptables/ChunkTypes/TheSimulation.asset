@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c69a3ce3b54e64c9a90c12055fc5ac, type: 3}
+  m_Name: TheSimulation
+  m_EditorClassIdentifier: 
+  chunkType: 9
+  ranges: {x: 0.5, y: 0.8, z: 0.3, w: 0.4}
+  roomPrefabs:
+  - {fileID: 4837790218605412414, guid: 051f179d545d8fb44a13fcc13e97d816, type: 3}
+  - {fileID: 4837790218605412414, guid: 00879b7cae990ca4bae1995a6e1aafe5, type: 3}
+  - {fileID: 4837790218605412414, guid: 8d1d9a9c0153e6c40bcaef5b9507e543, type: 3}
+  - {fileID: 4837790218605412414, guid: c784b79d2dc55c547878654b2f56ea52, type: 3}
+  - {fileID: 4837790218605412414, guid: 81c2c00538da3ca49bc2ef6f18d990d0, type: 3}
+  - {fileID: 4837790218605412414, guid: 2bb01f8d00e71d042bdda5b818d557c1, type: 3}
+  - {fileID: 4837790218605412414, guid: 8a7fc39f595b0484b8eaae47950890ff, type: 3}
+  emptyRoomPrefab: {fileID: 4837790218605412414, guid: c82cc9ab74d6f624c9c94df74e84280a,
+    type: 3}
+  lightPrefab: {fileID: 4837790218605412414, guid: 15c6494fa50f97743b07c6ff79b168da,
+    type: 3}
+  mapBrightness: 1
+  mapEmptiness: 10

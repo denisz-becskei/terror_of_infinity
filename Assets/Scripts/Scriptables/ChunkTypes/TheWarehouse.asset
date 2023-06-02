@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c69a3ce3b54e64c9a90c12055fc5ac, type: 3}
+  m_Name: TheWarehouse
+  m_EditorClassIdentifier: 
+  chunkType: 4
+  ranges: {x: 0.6, y: 1, z: 0.4, w: 0.5}
+  roomPrefabs:
+  - {fileID: 4837790218605412414, guid: d6a7c87c978828741ae03d257f9a471d, type: 3}
+  - {fileID: 4837790218605412414, guid: 6b075694a6f61794e83883049e5c8c72, type: 3}
+  - {fileID: 4837790218605412414, guid: 5435d0d306893f84cad45be20d6e25a5, type: 3}
+  - {fileID: 4837790218605412414, guid: 5b7491d1b8a119945bee35cc3989faa6, type: 3}
+  - {fileID: 4837790218605412414, guid: 746d91644ae61b548b8f79836d50d00d, type: 3}
+  - {fileID: 4837790218605412414, guid: 697e3c8a91f087e45a4577b5725277ed, type: 3}
+  - {fileID: 4837790218605412414, guid: 335280141d600f64783150d3f16357dc, type: 3}
+  - {fileID: 4837790218605412414, guid: 9967c8d5c7f67474aada948b5bd55e12, type: 3}
+  - {fileID: 4837790218605412414, guid: b6b1490cce4e44b45b6b6f8ef3ff7557, type: 3}
+  - {fileID: 4837790218605412414, guid: 87837180d61a68e4c85d9dd40a5d7fed, type: 3}
+  - {fileID: 4837790218605412414, guid: e4d6c5c5d5f33c44cb7ca25f3f64224e, type: 3}
+  emptyRoomPrefab: {fileID: 4837790218605412414, guid: 06da142dcd5f4264fa78896137978560,
+    type: 3}
+  lightPrefab: {fileID: 4837790218605412414, guid: 9ee2778d7f8a5444eb1d4ecbc5edc4a2,
+    type: 3}
+  mapBrightness: 9
+  mapEmptiness: 4
