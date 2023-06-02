@@ -31,7 +31,7 @@ public class GenerationManager : MonoBehaviour
         InfiniteNightSky,
         TheRottingCrypts,
         GateToReality,
-        Haven
+        ChromaticConondrum
     }
 
     [SerializeField] GameObject centerMarkerPrefab;

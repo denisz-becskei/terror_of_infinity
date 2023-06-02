@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HavenExplosion : MonoBehaviour
+public class ChromaticExplosion : MonoBehaviour
 {
     GameObject[] killZones;
     public void Explode(Color? color, bool isPlayerDead)

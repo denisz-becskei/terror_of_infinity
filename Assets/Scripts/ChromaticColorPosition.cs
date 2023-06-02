@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HavenColorPosition : MonoBehaviour
+public class ChromaticColorPosition : MonoBehaviour
 {
     public bool isEnabled = false;
     public bool isCalled = false;

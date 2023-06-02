@@ -4,7 +4,7 @@ using UnityEngine;
 public class BlinkLight : MonoBehaviour
 {
     [SerializeField] AudioClip clickOn, clickOff;
-    [SerializeField] HavenExplosion he;
+    [SerializeField] ChromaticExplosion ce;
 
     private Light spotlight;
     private AudioSource audioSource;
@@ -44,7 +44,7 @@ public class BlinkLight : MonoBehaviour
             }
         } else
         {
-            he.Explode(playerCurrentColor, false);
+            ce.Explode(playerCurrentColor, false);
             Debug.Log("You are safe... for now!");
         }
     }

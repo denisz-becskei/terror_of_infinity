@@ -9,7 +9,7 @@ public class Sinewave : MonoBehaviour
     public BlinkLight flashlight;
 
     private LineRenderer lr;
-    private HavenColorPosition hcp;
+    private ChromaticColorPosition ccp;
     private int points = 45;
     private float frequency = 1;
     private float speed = 1;
@@ -23,7 +23,7 @@ public class Sinewave : MonoBehaviour
     void Start()
     {
         lr = GetComponent<LineRenderer>();
-        hcp = gameObject.transform.parent.parent.gameObject.GetComponent<HavenColorPosition>();
+        ccp = gameObject.transform.parent.parent.gameObject.GetComponent<ChromaticColorPosition>();
     }
 
     private void Draw()
@@ -78,7 +78,7 @@ public class Sinewave : MonoBehaviour
             {
                 flashlight.color = RandomColorSelector();
                 flashlight.Blink();
-                hcp.isCalled = true;
+                ccp.isCalled = true;
             }
         } else if(frequency > 3.5f)
         {
@@ -90,8 +90,8 @@ public class Sinewave : MonoBehaviour
             speed = 1;
             lr.material = materials[0];
             flashlight.Interrupt();
-            flashlight.Explode(hcp.currentColor);
-            hcp.isCalled = false;
+            flashlight.Explode(ccp.currentColor);
+            ccp.isCalled = false;
             StartCoroutine(Pause());
         }
 

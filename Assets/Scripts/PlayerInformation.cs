@@ -7,7 +7,7 @@ public class PlayerInformation : MonoBehaviour
     public bool walkVision = false;
 
     [SerializeField] private GameObject nightSkyDome;
-    [SerializeField] private HavenColorPosition hcp;
+    [SerializeField] private ChromaticColorPosition ccp;
     [SerializeField] private GameObject sinewave;
 
     public void ChunkUpdateAction()
@@ -34,18 +34,18 @@ public class PlayerInformation : MonoBehaviour
             nightSkyDome.SetActive(false);
         }
 
-        // Turn on Haven scripts when entering Haven
-        if(currentChunkType == ChunkType.Haven)
+        // Turn on Chromatic scripts when entering Chromatic Conondrum
+        if(currentChunkType == ChunkType.ChromaticConondrum)
         {
             sinewave.SetActive(true);
-            hcp.isEnabled = true;
+            ccp.isEnabled = true;
         }
-        else if(currentChunkType != ChunkType.Haven && (sinewave.activeSelf || hcp.enabled))
+        else if(currentChunkType != ChunkType.ChromaticConondrum && (sinewave.activeSelf || ccp.enabled))
         {
             sinewave.GetComponent<Sinewave>().flashlight.Interrupt();
             sinewave.SetActive(false);
             
-            hcp.isEnabled = false;
+            ccp.isEnabled = false;
         }
     }
 }
