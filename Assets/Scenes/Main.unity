@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 516314810}
   - component: {fileID: 516314811}
   m_Layer: 5
-  m_Name: HavenSinewave
+  m_Name: ChromaticSinewave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -743,7 +743,7 @@ MonoBehaviour:
   nms: {fileID: 954883883}
   enemyController: {fileID: 1602996568}
   blockSize: 64
-  chunkOverride: 0
+  chunkOverride: 15
   currentState: 0
 --- !u!4 &599674792
 Transform:
@@ -880,7 +880,7 @@ MonoBehaviour:
   currentChunkType: 0
   walkVision: 0
   nightSkyDome: {fileID: 924119814}
-  hcp: {fileID: 637959512}
+  ccp: {fileID: 637959512}
   sinewave: {fileID: 516314808}
 --- !u!114 &637959512
 MonoBehaviour:
@@ -1969,7 +1969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickOn: {fileID: 8300000, guid: 2ce9247e74e371142a3f43b3e4caf673, type: 3}
   clickOff: {fileID: 8300000, guid: 0012e98af6a5b074799117df4b36fbe0, type: 3}
-  he: {fileID: 637959518}
+  ce: {fileID: 637959518}
   color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!82 &2064131136
 AudioSource:
