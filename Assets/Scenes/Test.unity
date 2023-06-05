@@ -629,9 +629,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'heh you died lol
-
-    kekw'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 714ebcb7064f4c042ada43d6b021f0bd, type: 2}
   m_sharedMaterial: {fileID: 7372499315164017012, guid: 714ebcb7064f4c042ada43d6b021f0bd,
