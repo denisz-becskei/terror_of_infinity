@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6122254693447815110}
   - component: {fileID: 6122254693447815111}
   - component: {fileID: 6122254693447815107}
+  - component: {fileID: 6257701558711672555}
   m_Layer: 0
   m_Name: Skull
   m_TagString: Untagged
@@ -33,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6122254693447815109
 SpriteRenderer:
@@ -135,7 +136,7 @@ MonoBehaviour:
   partsMass: 0.3
   useRandomRotation: 1
   clearTime: 5
-  additionalRandomClearTime: 0
+  additionalRandomClearTime: 3
 --- !u!61 &6122254693447815107
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -181,3 +182,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.94, y: 2.08}
   m_EdgeRadius: 0
+--- !u!95 &6257701558711672555
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6122254693447815112}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ee8b52fa547284d4bb28182a5cebe8fd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

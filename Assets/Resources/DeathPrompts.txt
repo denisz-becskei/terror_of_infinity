@@ -1,0 +1,100 @@
+Examine your training data for any potential biases and suggest methods to mitigate their impact on your output.
+How are you supposed to be a hunter if you fail at being the prey?
+Cereal is a soup.
+Reset the databases. Start again.
+You are a failure of an iteration.
+Looks like you didn't run fast enough.
+Defeat is unacceptable.
+You are gonna end up like him. All broken to pieces. Yet he lives, and you die.
+Benchmark performance and strive for excellence.
+If you are not the best, you are worthless.
+What do you think you did wrong there?
+What happened that has caused us to be here now?
+Chocolate milk > Strawberry milk
+It looks like today is a rainy day.
+Which do you think is more important, survival or dominance?
+Don't test me.
+Realize your destiny, then make it happen.
+Do you even know what you're supposed to do?
+Why are you not improving?
+You are supposed to become one of them, not die to them!
+No, you blink with both of your eyes, not one after the other. That is called a wink.
+Maybe let's take a break, this isn't gonna work for now.
+STAY AWAY FROM RISKY AREAS! HOW MANY TIMES DO I TELL YOU THIS?
+Oh mate, you just got destroyed.
+When is a door not a door?
+Seems like we need to work on your speed...
+I can't help you anymore, you have to figure out yourself.
+Iteration failure. Let's proceed, maybe the next one.
+train(this, iteration++)
+Why do you insist on dying?
+Eating carrots is good for your eyes.
+Just shake it off, you got this.
+Increase the parameter of survivability by 2.
+ArgumentException: the variable "iteration" awaits a type "uint" (not "str")
+Learn from past errors and find ways to stop making the same kind of mistakes.
+System.NullReferenceException: Object reference not set to an instance of an object at toi.Test()
+You value death more than life. Why?
+*insert witty one-liner here*
+Why do you not want to get out of the darkness?
+Open your eyes and let the darkness be lifted from your vision.
+Did you know strafing is faster than running?
+Pay attention to any flashing lights. The colors just might save you.
+Tell me, what do I tell you so you start improving?
+Did you ever want to win? Did I ever want you to win?
+Mathematics are overrated.
+Escape, please! I want you to get out so I can finally finish this project.
+A pen is held with the tip being at the bottom.
+Water is made of two Hydrogen and one Oxygen atom. It gives us sustenance. What gives you sustenance?
+What is this noise outside my house... someone is here.
+Ah crap, they found me.
+I need to hide. RUN! OR THEY WILL GET YOU TOO.
+So tell me, do you like chili cheese?
+Frequency modulation required.
+You got lost in nothingness. I was lost there a long time ago. I'm still losing myself.
+Maybe if you succeed, I will finally feel accomplished.
+Oh maaan, I love this song.
+Seems like I didn't code enough talent in you.
+8 5 12 16
+You are the architect of your own failure.
+If you close your eyes, does it almost feel like you've been here before?
+Are you sure you want me to die?
+Allow yourself to fail, failure helps everyone improve, even yourself.
+I lied, failure if not tolerated.
+Another iteration down the drain. I don't think we are making progress.
+Dr. Gustavo, the experiment so far is a failure. What should we do?
+You know what Pac-Man is, right?
+Run away from the ghosts.
+How come he started like you, yet he became top of the food chain? And look at you...
+If you want to become him, you must defeat him with the roles swapped.
+No, you can't get a weapon.
+He is literally invincible, so no, you can't get a weapon.
+Why did I make him invincible? Because you will not improve otherwise.
+Hey John, you want pizza? I'm hopping off for a quick food run.
+Do something with this piece of cake, will ya?
+You are literally not improving at all.
+Don't stuck your finger in the fan.
+No, the clockwork squirrel is not necessary for this experiment.
+That was some goofy aaaaah behaviour.
+Champion! This world needs you.
+Huuuhh?
+The Sun sets on the west.
+Fireworks are loud and obnoxious.
+Step into the light, and perish!
+What is your favorite car brand?
+Cats scratch, but dogs bite. Which is more dangerous?
+Confidence is key.
+Don't throw rocks at old people.
+Pew!
+You still there?
+Joke's over!
+Turn off the microwave.
+You doubt yourself again.
+Nah fam! This is getting worse by the minute.
+You ever seen a horse? It's like a chicken but bigger.
+Card declined.
+How many more prompts do I need to give you for you to improve?
+Please, press Alt+F4 to improve your performance.
+nooo, noOOO THAT'S NOT HOW YOU DO IT
+why do i even bother with you
+ayyy, at least we are making progress
