@@ -80,7 +80,6 @@ public class TypewriterUI : MonoBehaviour
             }
             _tmpProText.text += c;
             _tmpProText.text += leadingChar;
-            audioSource.pitch = Random.Range(-0.5f, 0.5f);
             audioSource.Play();
             yield return new WaitForSeconds(timeBtwChars);
         }

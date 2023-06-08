@@ -18,6 +18,8 @@ TagManager:
   - Ground
   - UIContainer
   - SkullContainer
+  - YouDiedUIElement
+  - ContinueButton
   layers:
   - Default
   - TransparentFX
