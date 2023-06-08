@@ -14,11 +14,12 @@ public class SpawnSkulls : MonoBehaviour
 
     IEnumerator DelayedSkullSpawns()
     {
+        yield return new WaitForSeconds(8f);
         for (int i = -5; i < skullsToGenerate - 5; i++)
         {
             GameObject skull = Instantiate(skullPrefab, transform);
-            skull.transform.localPosition = new Vector3(0.64f + i * 0.15f, 0.011f, 0f);
-            skull.transform.localScale = new Vector3(0.06f, 0.06f, 0.06f);
+            skull.transform.localPosition = new Vector3(0.04f + i * 0.08f, 0f, 0f);
+            skull.transform.localScale = new Vector3(0.03f, 0.03f, 0.03f);
             skull.transform.localRotation = Quaternion.Euler(90f, 0, 0);
             yield return new WaitForSeconds(0.05f);
         }

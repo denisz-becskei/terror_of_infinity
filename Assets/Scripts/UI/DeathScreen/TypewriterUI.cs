@@ -5,16 +5,17 @@ using TMPro;
 
 public class TypewriterUI : MonoBehaviour
 {
-    Text _text;
-    TMP_Text _tmpProText;
-    string writer;
+    private Text _text;
+    private TMP_Text _tmpProText;
+    private string writer;
+    private AudioSource audioSource;
 
     [SerializeField] float delayBeforeStart = 0f;
     [SerializeField] float timeBtwChars = 0.1f;
     [SerializeField] string leadingChar = "";
     [SerializeField] bool leadingCharBeforeDelay = false;
 
-    [SerializeField] GameObject deathScreen;
+    [SerializeField] GameObject skullScreen;
     [SerializeField] GameObject continueButton;
 
     // Use this for initialization
@@ -22,6 +23,7 @@ public class TypewriterUI : MonoBehaviour
     {
         _text = GetComponent<Text>()!;
         _tmpProText = GetComponent<TMP_Text>()!;
+        audioSource = GetComponent<AudioSource>();
 
         if (_text != null)
         {
@@ -68,7 +70,7 @@ public class TypewriterUI : MonoBehaviour
         _tmpProText.text = leadingCharBeforeDelay ? leadingChar : "";
 
         yield return new WaitForSeconds(delayBeforeStart);
-        deathScreen.GetComponent<DestroySkull>().Destroy(GetMaxIndex());
+        skullScreen.GetComponent<DestroySkull>().Destroy(GetMaxIndex());
 
         foreach (char c in writer)
         {
@@ -78,6 +80,8 @@ public class TypewriterUI : MonoBehaviour
             }
             _tmpProText.text += c;
             _tmpProText.text += leadingChar;
+            audioSource.pitch = Random.Range(-0.5f, 0.5f);
+            audioSource.Play();
             yield return new WaitForSeconds(timeBtwChars);
         }
         continueButton.GetComponent<ContinueButtonController>().Animate();
@@ -90,7 +94,7 @@ public class TypewriterUI : MonoBehaviour
 
     private uint GetMaxIndex()
     {
-        Transform[] transforms = deathScreen.GetComponentsInChildren<Transform>();
+        Transform[] transforms = skullScreen.GetComponentsInChildren<Transform>();
         return (uint)(transforms.Length - 1);
     }
 }

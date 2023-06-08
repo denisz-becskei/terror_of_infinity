@@ -16,6 +16,8 @@ TagManager:
   - HavenLight
   - KillZone
   - Ground
+  - UIContainer
+  - SkullContainer
   layers:
   - Default
   - TransparentFX

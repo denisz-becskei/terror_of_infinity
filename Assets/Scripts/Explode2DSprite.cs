@@ -18,11 +18,6 @@ public class Explode2DSprite : MonoBehaviour
     [SerializeField] float clearTime = 5f;
     [SerializeField] float additionalRandomClearTime = 3f;
 
-    private void OnMouseDown()
-    {
-        if (explodeOnClick) Explode();
-    }
-
     public void Explode()
     {
         Texture2D originalTexture = GetComponent<SpriteRenderer>().sprite.texture;

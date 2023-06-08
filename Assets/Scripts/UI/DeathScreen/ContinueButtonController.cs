@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ContinueButtonController : MonoBehaviour
 {
-    private Animator animator;
+    [SerializeField] Animator animator;
+    private Animator uiContainerAnimator;
+    private GameObject skullContainer;
+
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        uiContainerAnimator = GameObject.FindGameObjectWithTag("UIContainer").GetComponent<Animator>();
+        skullContainer = GameObject.FindGameObjectWithTag("SkullContainer");
     }
 
-    private void OnMouseDown()
+    public void Continue()
     {
-        Debug.Log("We go back!");
+        uiContainerAnimator.Play("UIContainerShrink");
+        Animator[] animators = skullContainer.GetComponentsInChildren<Animator>();
+        foreach (Animator animator in animators)
+        {
+            animator.Play("SkullAnimationZoopOut");
+        }
     }
 
     public void Animate()
