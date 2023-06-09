@@ -24,14 +24,14 @@ STAY AWAY FROM RISKY AREAS! HOW MANY TIMES DO I TELL YOU THIS?
 Oh mate, you just got destroyed.
 When is a door not a door?
 Seems like we need to work on your speed...
-I can't help you anymore, you have to figure out yourself.
+I can't help you anymore, you have to figure it out yourself.
 Iteration failure. Let's proceed, maybe the next one.
 train(this, iteration++)
 Why do you insist on dying?
 Eating carrots is good for your eyes.
 Just shake it off, you got this.
 Increase the parameter of survivability by 2.
-ArgumentException: the variable "iteration" awaits a type "uint" (not "str")
+ArgumentException: the variable "iteration" awaits type "uint" (not "str")
 Learn from past errors and find ways to stop making the same kind of mistakes.
 System.NullReferenceException: Object reference not set to an instance of an object at toi.Test()
 You value death more than life. Why?
@@ -60,7 +60,7 @@ You are the architect of your own failure.
 If you close your eyes, does it almost feel like you've been here before?
 Are you sure you want me to die?
 Allow yourself to fail, failure helps everyone improve, even yourself.
-I lied, failure if not tolerated.
+I lied, failure is not tolerated.
 Another iteration down the drain. I don't think we are making progress.
 Dr. Gustavo, the experiment so far is a failure. What should we do?
 You know what Pac-Man is, right?
@@ -121,7 +121,7 @@ Waterfalls are affected by gravity.
 Road work ahead.
 Can you be a tabby cat?
 Well, nevermind then.
-Suzie, can you make ma another coffee? I'll be here for a while.
+Suzie, can you make me another coffee? I'll be here for a while.
 If I am the only God, then you're the proof of my existance.
 Well, that was not the right way to go.
 It's ok, you can't get it right every time.

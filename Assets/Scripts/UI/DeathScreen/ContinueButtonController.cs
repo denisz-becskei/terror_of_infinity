@@ -3,7 +3,7 @@ using UnityEngine;
 public class ContinueButtonController : MonoBehaviour
 {
     [SerializeField] Animator animator;
-    [SerializeField] AudioSource audioSource;
+    private AudioSource audioSource;
     private Animator uiContainerAnimator;
     private GameObject skullContainer;
     

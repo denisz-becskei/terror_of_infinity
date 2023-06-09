@@ -14,7 +14,7 @@ public class VideoShirnk : MonoBehaviour
 
     IEnumerator DelayShrink()
     {
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(12f);
         animator.Play("ShrinkVideo");
         yield return new WaitForSeconds(2f);
         rt.Release();
