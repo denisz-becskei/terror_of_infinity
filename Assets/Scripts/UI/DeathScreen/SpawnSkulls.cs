@@ -14,7 +14,7 @@ public class SpawnSkulls : MonoBehaviour
 
     IEnumerator DelayedSkullSpawns()
     {
-        yield return new WaitForSeconds(12f);
+        yield return new WaitForSeconds(10f);
         for (int i = -5; i < skullsToGenerate - 5; i++)
         {
             GameObject skull = Instantiate(skullPrefab, transform);

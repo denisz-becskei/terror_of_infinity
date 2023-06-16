@@ -12,7 +12,7 @@ public class DiedZoopController : MonoBehaviour
 
     IEnumerator DelayedAnimationStart()
     {
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(10f);
         animator.Play("GeneralAnimationZoop");
     }
 }

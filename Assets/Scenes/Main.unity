@@ -1043,6 +1043,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 135107038692538515, guid: 941a460031a826f439b3858aefbf9d08,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1141025463}
+    - target: {fileID: 135107039001921797, guid: 941a460031a826f439b3858aefbf9d08,
+        type: 3}
+      propertyPath: delayBeforeStart
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 135107039195440385, guid: 941a460031a826f439b3858aefbf9d08,
         type: 3}
       propertyPath: m_IsActive
@@ -1058,6 +1068,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -56.600002
       objectReference: {fileID: 0}
+    - target: {fileID: 135107039226650186, guid: 941a460031a826f439b3858aefbf9d08,
+        type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: 8d4c92349ea393c4a9a21ece52017dc9,
+        type: 3}
     - target: {fileID: 135107039267802047, guid: 941a460031a826f439b3858aefbf9d08,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1067,6 +1083,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 135107039538978867, guid: 941a460031a826f439b3858aefbf9d08,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 135107039538978867, guid: 941a460031a826f439b3858aefbf9d08,
         type: 3}

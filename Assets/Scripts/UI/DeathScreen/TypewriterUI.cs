@@ -10,6 +10,9 @@ public class TypewriterUI : MonoBehaviour
     private string writer;
     private AudioSource audioSource;
 
+    private bool animating = false;
+    private bool skip = false;
+
     [SerializeField] float delayBeforeStart = 0f;
     [SerializeField] float timeBtwChars = 0.1f;
     [SerializeField] string leadingChar = "";
@@ -42,6 +45,14 @@ public class TypewriterUI : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space) && animating)
+        {
+            skip = true;
+        }
+    }
+
     IEnumerator TypeWriterText()
     {
         _text.text = leadingCharBeforeDelay ? leadingChar : "";
@@ -68,7 +79,7 @@ public class TypewriterUI : MonoBehaviour
     IEnumerator TypeWriterTMP()
     {
         _tmpProText.text = leadingCharBeforeDelay ? leadingChar : "";
-
+        animating = true;
         yield return new WaitForSeconds(delayBeforeStart);
         skullScreen.GetComponent<DestroySkull>().Destroy(GetMaxIndex());
 
@@ -80,11 +91,19 @@ public class TypewriterUI : MonoBehaviour
             }
             _tmpProText.text += c;
             _tmpProText.text += leadingChar;
+
+            if(skip)
+            {
+                skip = false;
+                _tmpProText.text = writer;
+                break;
+            }
+
             audioSource.Play();
             yield return new WaitForSeconds(timeBtwChars);
         }
         continueButton.GetComponent<ContinueButtonController>().Animate();
-
+        animating = false;
         if (leadingChar != "")
         {
             _tmpProText.text = _tmpProText.text.Substring(0, _tmpProText.text.Length - leadingChar.Length);
