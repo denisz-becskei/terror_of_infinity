@@ -5,7 +5,6 @@ using TMPro;
 
 public class TypewriterUI : MonoBehaviour
 {
-    private Text _text;
     private TMP_Text _tmpProText;
     private string writer;
     private AudioSource audioSource;
@@ -24,25 +23,8 @@ public class TypewriterUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        _text = GetComponent<Text>()!;
         _tmpProText = GetComponent<TMP_Text>()!;
         audioSource = GetComponent<AudioSource>();
-
-        if (_text != null)
-        {
-            writer = _text.text;
-            _text.text = "";
-
-            StartCoroutine("TypeWriterText");
-        }
-
-        if (_tmpProText != null)
-        {
-            writer = _tmpProText.text;
-            _tmpProText.text = "";
-
-            StartCoroutine("TypeWriterTMP");
-        }
     }
 
     void Update()
@@ -53,33 +35,22 @@ public class TypewriterUI : MonoBehaviour
         }
     }
 
-    IEnumerator TypeWriterText()
+    public void StartTypewrite()
     {
-        _text.text = leadingCharBeforeDelay ? leadingChar : "";
-
-        yield return new WaitForSeconds(delayBeforeStart);
-
-        foreach (char c in writer)
+        if (_tmpProText != null)
         {
-            if (_text.text.Length > 0)
-            {
-                _text.text = _text.text.Substring(0, _text.text.Length - leadingChar.Length);
-            }
-            _text.text += c;
-            _text.text += leadingChar;
-            yield return new WaitForSeconds(timeBtwChars);
+            writer = _tmpProText.text;
+            _tmpProText.text = "";
         }
 
-        if (leadingChar != "")
-        {
-            _text.text = _text.text.Substring(0, _text.text.Length - leadingChar.Length);
-        }
+        StartCoroutine(TypeWriterTMP());
     }
 
     IEnumerator TypeWriterTMP()
     {
         _tmpProText.text = leadingCharBeforeDelay ? leadingChar : "";
         animating = true;
+        bool successfullySkipped = false;
         yield return new WaitForSeconds(delayBeforeStart);
         skullScreen.GetComponent<DestroySkull>().Destroy(GetMaxIndex());
 
@@ -95,6 +66,7 @@ public class TypewriterUI : MonoBehaviour
             if(skip)
             {
                 skip = false;
+                successfullySkipped = true;
                 _tmpProText.text = writer;
                 break;
             }
@@ -104,7 +76,7 @@ public class TypewriterUI : MonoBehaviour
         }
         continueButton.GetComponent<ContinueButtonController>().Animate();
         animating = false;
-        if (leadingChar != "")
+        if (leadingChar != "" && !successfullySkipped)
         {
             _tmpProText.text = _tmpProText.text.Substring(0, _tmpProText.text.Length - leadingChar.Length);
         }

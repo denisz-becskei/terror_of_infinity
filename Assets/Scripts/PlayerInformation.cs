@@ -42,7 +42,7 @@ public class PlayerInformation : MonoBehaviour
         }
         else if(currentChunkType != ChunkType.ChromaticConondrum && (sinewave.activeSelf || ccp.enabled))
         {
-            sinewave.GetComponent<Sinewave>().flashlight.Interrupt();
+            sinewave.GetComponentInChildren<Sinewave>().flashlight.Interrupt();
             sinewave.SetActive(false);
             
             ccp.isEnabled = false;

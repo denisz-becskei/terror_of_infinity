@@ -18,6 +18,8 @@ public class FirstPersonMovement : MonoBehaviour
     private PlayerInformation pi;
     private EnemyController enemy;
 
+    private bool canMove = true;
+
     void Awake()
     {
         // Get the rigidbody on this.
@@ -32,6 +34,12 @@ public class FirstPersonMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(!canMove)
+        {
+            return;
+        }
+
+
         // Update IsRunning from input.
         IsRunning = canRun && Input.GetKey(runningKey);
 
@@ -51,6 +59,11 @@ public class FirstPersonMovement : MonoBehaviour
 
         // Apply movement.
         rigidbody.velocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.velocity.y, targetVelocity.y);
+    }
+
+    public void ToggleMovement()
+    {
+        canMove= !canMove;
     }
 
     private void Update()

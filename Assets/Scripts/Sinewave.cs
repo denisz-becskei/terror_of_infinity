@@ -6,10 +6,10 @@ public class Sinewave : MonoBehaviour
     [SerializeField] Material[] materials;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip laserClip;
+    [SerializeField] ChromaticColorPosition ccp;
     public BlinkLight flashlight;
 
     private LineRenderer lr;
-    private ChromaticColorPosition ccp;
     private int points = 45;
     private float frequency = 1;
     private float speed = 1;
@@ -23,7 +23,6 @@ public class Sinewave : MonoBehaviour
     void Start()
     {
         lr = GetComponent<LineRenderer>();
-        ccp = gameObject.transform.parent.parent.gameObject.GetComponent<ChromaticColorPosition>();
     }
 
     private void Draw()

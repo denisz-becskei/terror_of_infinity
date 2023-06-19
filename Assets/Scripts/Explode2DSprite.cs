@@ -55,6 +55,7 @@ public class Explode2DSprite : MonoBehaviour
     void AddExplodingPart(Texture2D tex)
     {
         var part = new GameObject(gameObject.name + "_part");
+        part.layer = 6;
         var spriteRenderer = part.AddComponent<SpriteRenderer>();
         spriteRenderer.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
 

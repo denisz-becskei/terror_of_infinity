@@ -7,9 +7,19 @@ public class SpawnSkulls : MonoBehaviour
     [SerializeField] GameObject skullPrefab;
     [SerializeField] int skullsToGenerate = 10;
 
-    void Start()
+    public void StartSkullSpawns()
     {
         StartCoroutine(DelayedSkullSpawns());
+    }
+
+    public int GetSkullsToGenerate()
+    {
+        return skullsToGenerate;
+    }
+
+    public void SetSkullsToGenerate(int skullsToGenerate)
+    {
+        this.skullsToGenerate = skullsToGenerate;
     }
 
     IEnumerator DelayedSkullSpawns()

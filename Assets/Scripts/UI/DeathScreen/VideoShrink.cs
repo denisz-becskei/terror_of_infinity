@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VideoShirnk : MonoBehaviour
+public class VideoShrink : MonoBehaviour
 {
     [SerializeField] RenderTexture rt;
     private Animator animator;
     private void Start()
     {
-        StartCoroutine(DelayShrink());
         animator = GetComponent<Animator>();
+    }
+
+    public void StartVideoShrink()
+    {
+        StartCoroutine(DelayShrink());
     }
 
     IEnumerator DelayShrink()
