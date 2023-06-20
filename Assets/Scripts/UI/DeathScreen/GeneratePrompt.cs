@@ -13,6 +13,6 @@ public class GeneratePrompt : MonoBehaviour
     public void Generate()
     {
         Debug.Log("Generating...");
-        GetComponent<TMP_Text>().text = promptList[Random.Range(0, promptList.Length)].Trim();
+        GetComponent<TMP_Text>().text = promptList[WorldWideScripts.GetTotallyRandomNumberBetween(0, promptList.Length)].Trim();
     }
 }

@@ -18,7 +18,7 @@ public class VideoShrink : MonoBehaviour
 
     IEnumerator DelayShrink()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(DeathLength.DEATH_LENGTH);
         animator.Play("ShrinkVideo");
         yield return new WaitForSeconds(2f);
         rt.Release();

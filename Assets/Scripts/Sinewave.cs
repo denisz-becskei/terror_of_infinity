@@ -4,8 +4,6 @@ using UnityEngine;
 public class Sinewave : MonoBehaviour
 {
     [SerializeField] Material[] materials;
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip laserClip;
     [SerializeField] ChromaticColorPosition ccp;
     public BlinkLight flashlight;
 
@@ -81,9 +79,6 @@ public class Sinewave : MonoBehaviour
             }
         } else if(frequency > 3.5f)
         {
-            audioSource.clip = laserClip;
-            audioSource.Play();
-
             isActive = false;
             frequency = 0;
             speed = 1;

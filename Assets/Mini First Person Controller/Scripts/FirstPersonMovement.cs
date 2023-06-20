@@ -89,4 +89,16 @@ public class FirstPersonMovement : MonoBehaviour
             }
         }
     }
+
+    public void TeleportToPositionalCoordinates(Vector3 position)
+    {
+        transform.localPosition = position;
+    }
+
+    public void TeleportToWorldCoordinates(string worldCoordinates)
+    {
+        throw new System.NotImplementedException("Nyi");
+    }
+
+
 }

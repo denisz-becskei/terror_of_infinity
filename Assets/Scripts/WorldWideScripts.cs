@@ -105,4 +105,10 @@ public class WorldWideScripts : MonoBehaviour
     {
         return Mathf.PerlinNoise(x, y);
     }
+
+    public static int GetTotallyRandomNumberBetween(int a, int b)
+    {
+        System.Random rng = new System.Random();
+        return rng.Next(a, b);
+    }
 }

@@ -18,13 +18,13 @@ public class DiedZoopController : MonoBehaviour
 
     IEnumerator DelayedAnimationStart()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(DeathLength.DEATH_LENGTH);
         animator.Play("GeneralAnimationZoop");
     }
 
     IEnumerator DelayedCauseAnimationStart()
     {
-        yield return new WaitForSeconds(10.75f);
+        yield return new WaitForSeconds(DeathLength.DEATH_LENGTH + 0.75f);
         causeAnimator.Play("GeneralAnimationZoop");
     }
 }

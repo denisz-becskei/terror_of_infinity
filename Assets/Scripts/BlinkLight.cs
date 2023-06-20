@@ -38,10 +38,8 @@ public class BlinkLight : MonoBehaviour
     {
         if(playerCurrentColor == null || playerCurrentColor != color)
         {
-            for(uint i = 0; i < 1000; i++)
-            {
-                Debug.Log("YOU DIED!");
-            }
+            ce.Explode(null, true);
+            Debug.Log("YOU DIED!");
         } else
         {
             ce.Explode(playerCurrentColor, false);

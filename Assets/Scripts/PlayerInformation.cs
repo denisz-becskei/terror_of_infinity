@@ -1,14 +1,25 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using static GenerationManager;
 
-public class PlayerInformation : MonoBehaviour
+public class PlayerInformation : MonoBehaviour, IDataPersistance
 {
     public ChunkType currentChunkType;
     public bool walkVision = false;
 
+    private RaycastHit hit;
+    public string playerCurrentWorldPosition;
+
     [SerializeField] private GameObject nightSkyDome;
     [SerializeField] private ChromaticColorPosition ccp;
     [SerializeField] private GameObject sinewave;
+    [SerializeField] private GameObject sinewaveTexture;
+
+    private void Start()
+    {
+        StartCoroutine(UpdatePlayerPosition());
+    }
 
     public void ChunkUpdateAction()
     {
@@ -38,14 +49,51 @@ public class PlayerInformation : MonoBehaviour
         if(currentChunkType == ChunkType.ChromaticConondrum)
         {
             sinewave.SetActive(true);
+            sinewaveTexture.SetActive(true);
             ccp.isEnabled = true;
         }
         else if(currentChunkType != ChunkType.ChromaticConondrum && (sinewave.activeSelf || ccp.enabled))
         {
             sinewave.GetComponentInChildren<Sinewave>().flashlight.Interrupt();
             sinewave.SetActive(false);
+            sinewaveTexture.SetActive(false);
             
             ccp.isEnabled = false;
         }
+    }
+
+    private IEnumerator UpdatePlayerPosition()
+    {
+        yield return new WaitForSeconds(2f);
+
+        Vector3 dwn = transform.TransformDirection(Vector3.down);
+
+        if (Physics.Raycast(transform.position, dwn, out hit, 4))
+        {
+            try
+            {
+                if (hit.transform.parent.TryGetComponent<RoomPosition>(out var rp))
+                {
+                    playerCurrentWorldPosition = rp.coordinates;
+                }
+            } catch (NullReferenceException)
+            {
+                
+            }
+        }
+        StartCoroutine(UpdatePlayerPosition());
+    }
+
+    public void LoadData(GameStates data)
+    {
+        playerCurrentWorldPosition = data.PLAYER_WORLD_COORDINATES;
+        Debug.Log("Loading World Position");
+        // TODO: Move player there
+    }
+
+    public void SaveData(ref GameStates data)
+    {
+        data.PLAYER_WORLD_COORDINATES = playerCurrentWorldPosition;
+        Debug.Log("Saving World Position");
     }
 }
