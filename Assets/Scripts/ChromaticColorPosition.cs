@@ -7,10 +7,18 @@ public class ChromaticColorPosition : MonoBehaviour
     public Color? currentColor;
     public string debugColor;
 
+    private PlayerInformation pi;
     private RaycastHit hit;
+
+    private void Start()
+    {
+        pi = GetComponent<PlayerInformation>();
+    }
 
     private void FixedUpdate()
     {
+        if (pi.currentChunkType != GenerationManager.ChunkType.ChromaticConondrum) return;
+
         if(!isEnabled) return;
         if(isCalled) RayCastColorDetection();
     }

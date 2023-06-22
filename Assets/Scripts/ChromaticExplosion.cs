@@ -8,6 +8,8 @@ public class ChromaticExplosion : MonoBehaviour
     [SerializeField] DeathHandler dh;
 
     [SerializeField] AudioClip laserClip;
+
+    private Coroutine explosion = null;
     public void Explode(Color? color, bool isPlayerDead)
     {
         if (isPlayerDead)
@@ -38,7 +40,7 @@ public class ChromaticExplosion : MonoBehaviour
                     kz.GetComponent<KillZone>().isActive = true;
                 }
             }
-            StartCoroutine(ResetExplode());
+            explosion = StartCoroutine(ResetExplode());
         }
     }
 
@@ -62,6 +64,13 @@ public class ChromaticExplosion : MonoBehaviour
         yield return new WaitForSeconds(5f);
         foreach (GameObject kz in killZones)
         {
+            if(kz == null)
+            {
+                StopCoroutine(explosion);
+                explosion = null;   
+                break;
+            }
+
             kz.GetComponent<Renderer>().enabled = false;
             kz.GetComponent<KillZone>().isActive = false;
         }

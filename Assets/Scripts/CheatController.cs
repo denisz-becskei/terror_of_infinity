@@ -1,17 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CheatController : MonoBehaviour
+public class CheatController : MonoBehaviour, IDataPersistance
 {
-    [SerializeField] private bool infiniteHealth;
+    [SerializeField] bool infiniteHealth;
 
-    private void Start()
+    public void LoadData(GameStates data)
     {
-        int lives = GameObject.FindGameObjectWithTag("DataPersistance").GetComponent<DataPersistanceManager>().GetGameState().NUMBER_OF_LIVES;
-        if (infiniteHealth && lives < 5)
+        return;
+    }
+
+    public void SaveData(ref GameStates data)
+    {
+        if(infiniteHealth)
         {
-            GameObject.FindGameObjectWithTag("DataPersistance").GetComponent<DataPersistanceManager>().GetGameState().NUMBER_OF_LIVES = 5;
+            data.NUMBER_OF_LIVES = 10;
         }
     }
 }

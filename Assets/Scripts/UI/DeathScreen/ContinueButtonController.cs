@@ -1,20 +1,23 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ContinueButtonController : MonoBehaviour
 {
     [SerializeField] Animator animator;
     [SerializeField] FirstPersonLook fpl;
+
     private DeathHandler dh;
     private AudioSource audioSource;
     private Animator uiContainerAnimator;
     private GameObject skullContainer;
     
+    
     private void Start()
     {
         uiContainerAnimator = GameObject.FindGameObjectWithTag("UIContainer").GetComponent<Animator>();
         skullContainer = GameObject.FindGameObjectWithTag("SkullContainer");
-        audioSource = GameObject.FindGameObjectWithTag("ContinueButton").GetComponent<AudioSource>();
+        audioSource = transform.parent.GetComponent<AudioSource>();
         dh = GameObject.FindGameObjectWithTag("GameController").GetComponent<DeathHandler>();
     }
 
@@ -27,7 +30,6 @@ public class ContinueButtonController : MonoBehaviour
         {
             animator.Play("SkullAnimationZoopOut");
         }
-
         StartCoroutine(DelayFinishSequence());
     }
 

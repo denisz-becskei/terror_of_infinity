@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class TypewriterUI : MonoBehaviour
@@ -19,7 +18,6 @@ public class TypewriterUI : MonoBehaviour
     [SerializeField] GameObject skullScreen;
     [SerializeField] GameObject continueButton;
 
-    // Use this for initialization
     void Start()
     {
         _tmpProText = GetComponent<TMP_Text>()!;

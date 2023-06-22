@@ -1085,7 +1085,7 @@ MonoBehaviour:
   nms: {fileID: 954883883}
   enemyController: {fileID: 1602996568}
   blockSize: 64
-  chunkOverride: 15
+  chunkOverride: 1
   currentState: 0
 --- !u!4 &599674792
 Transform:
@@ -1572,6 +1572,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &792704659 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 135107039538978866, guid: 941a460031a826f439b3858aefbf9d08,
+    type: 3}
+  m_PrefabInstance: {fileID: 892140577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &892140577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1784,7 +1796,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: 738d85729ac695249835283d1f9f74f3,
+      objectReference: {fileID: 32900000, guid: 4791c53a95e27154dbee93dafe6b1dc0,
         type: 3}
     - target: {fileID: 135107039226650186, guid: 941a460031a826f439b3858aefbf9d08,
         type: 3}
@@ -1861,6 +1873,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 135107039538978866, guid: 941a460031a826f439b3858aefbf9d08,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 135107039538978867, guid: 941a460031a826f439b3858aefbf9d08,
         type: 3}
       propertyPath: m_Color.a
@@ -1871,13 +1888,24 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 135107039538978877, guid: 941a460031a826f439b3858aefbf9d08,
+        type: 3}
+      propertyPath: fpl
+      value: 
+      objectReference: {fileID: 1281631051}
+    - target: {fileID: 135107039538978877, guid: 941a460031a826f439b3858aefbf9d08,
+        type: 3}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 792704659}
     - target: {fileID: 135107039538978878, guid: 941a460031a826f439b3858aefbf9d08,
         type: 3}
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 135107038435643727, guid: 941a460031a826f439b3858aefbf9d08, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 135107038768172602, guid: 941a460031a826f439b3858aefbf9d08,
         type: 3}

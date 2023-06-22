@@ -48,13 +48,13 @@ public class GenerationManager : MonoBehaviour
     public static List<GameObject> rooms;
     [SerializeField] ChunkType chunkOverride;
 
-    private int checkerRange = 5;
-    private int chunkLimit = 36;
-    private int baseChunkAmt = 5;
+    private readonly int checkerRange = 5;
+    private readonly int chunkLimit = 36;
+    private readonly int baseChunkAmt = 5;
 
     public GenerationState currentState = GenerationState.Idle;
 
-    private List<Chunk> chunks = new List<Chunk>();
+    private List<Chunk> chunks;
     private GetChunkType gct;
     private PlayerInformation pi;
 
@@ -66,6 +66,8 @@ public class GenerationManager : MonoBehaviour
 
     public void GenerateWorld()
     {
+        chunks = new List<Chunk>();
+
         rooms = new List<GameObject>();
         gct = GetComponent<GetChunkType>();
 
@@ -85,7 +87,7 @@ public class GenerationManager : MonoBehaviour
         player.SetActive(false);
 
         GameObject cleanRoom = WorldWideScripts.GetFirstCleanRoomInChunkByPos(new Vector2(2, 2));
-        player.transform.position = new Vector3(cleanRoom.transform.position.x, 3f, cleanRoom.transform.position.z);
+        player.transform.position = new Vector3(cleanRoom.transform.position.x, 2f, cleanRoom.transform.position.z);
 
         player.SetActive(true);
         pi = player.GetComponent<PlayerInformation>();

@@ -65,6 +65,7 @@ public class DeathHandler : MonoBehaviour, IDataPersistance
         fpsCamera.enabled = false;
         fpsCamera.GetComponent<AudioListener>().enabled = false;
         eventCamera.enabled = true;
+        eventCamera.GetComponent<AudioListener>().enabled = true;
 
         causeAnimator.GetComponent<TMP_Text>().text = deathCause;
 
@@ -85,6 +86,7 @@ public class DeathHandler : MonoBehaviour, IDataPersistance
         }
 
         eventCamera.enabled = false;
+        eventCamera.GetComponent<AudioListener>().enabled = false;
         fpsCamera.enabled = true;
         fpsCamera.GetComponent<AudioListener>().enabled = true;
 

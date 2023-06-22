@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using static GenerationManager;
@@ -16,9 +15,11 @@ public class PlayerInformation : MonoBehaviour, IDataPersistance
     [SerializeField] private GameObject sinewave;
     [SerializeField] private GameObject sinewaveTexture;
 
+    private Coroutine updatePositionRoutine;
+
     private void Start()
     {
-        StartCoroutine(UpdatePlayerPosition());
+        updatePositionRoutine = StartCoroutine(UpdatePlayerPosition());
     }
 
     public void ChunkUpdateAction()
@@ -60,28 +61,42 @@ public class PlayerInformation : MonoBehaviour, IDataPersistance
             
             ccp.isEnabled = false;
         }
+
+        // Turn off Player Position Updating when in Purgatory
+        if(currentChunkType == ChunkType.Purgatory)
+        {
+            StopCoroutine(updatePositionRoutine);
+            updatePositionRoutine = null;
+        } else if(currentChunkType != ChunkType.Purgatory && updatePositionRoutine == null)
+        {
+            StartCoroutine(UpdatePlayerPosition());
+        }
     }
 
     private IEnumerator UpdatePlayerPosition()
     {
         yield return new WaitForSeconds(2f);
+        PositionUpdate();
+    }
 
+    private void PositionUpdate()
+    {
         Vector3 dwn = transform.TransformDirection(Vector3.down);
 
         if (Physics.Raycast(transform.position, dwn, out hit, 4))
         {
-            try
+            Debug.Log(hit.transform.gameObject.name);
+            if (hit.transform.gameObject.CompareTag("Ground"))
             {
-                if (hit.transform.parent.TryGetComponent<RoomPosition>(out var rp))
+                var rp = hit.transform.parent.GetComponent<RoomPosition>();
+                Debug.Log(rp);
+                if (rp != null)
                 {
                     playerCurrentWorldPosition = rp.coordinates;
                 }
-            } catch (NullReferenceException)
-            {
-                
             }
         }
-        StartCoroutine(UpdatePlayerPosition());
+        updatePositionRoutine = StartCoroutine(UpdatePlayerPosition());
     }
 
     public void LoadData(GameStates data)

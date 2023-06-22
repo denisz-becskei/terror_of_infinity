@@ -31,15 +31,20 @@ public class Chunk : MonoBehaviour
     private GenerationManager gm;
 
     private List<GameObject> currentChunkRooms;
-    private int GAME_SEED;
+    private int? GAME_SEED = null;
 
+    private void Awake()
+    {
+        while(GAME_SEED == null)
+        {
+            GAME_SEED = GameObject.FindGameObjectWithTag("DataPersistance").GetComponent<DataPersistanceManager>().GetGameState().GAME_SEED;
+        }
+        Random.InitState((int)GAME_SEED);
+    }
 
     public void Setup(int chunkSize, ChunkTypeScriptableObject chunkType, GameObject worldGrid,
         GameObject centerMarkerPrefab, EnemyController ec, Vector2 chunkCoordinates)
     {
-        GAME_SEED = GameObject.FindGameObjectWithTag("DataPersistance").GetComponent<DataPersistanceManager>().GetGameState().GAME_SEED;
-        Random.InitState(GAME_SEED);
-
         this.chunkSize = chunkSize;
         this.mapBrightness = chunkType.mapBrightness;
         this.mapEmptiness = chunkType.mapEmptiness;
@@ -148,7 +153,8 @@ public class Chunk : MonoBehaviour
         chunkContainer.GetComponent<BoxCollider>().isTrigger = true;
         chunkContainer.AddComponent<ChunkChecker>().gm = gm;
 
-        chunkContainer.AddComponent<ChunkPosition>().ChunkPositionInWorld = new Vector2(chunkCoordinates.x, chunkCoordinates.y);
+        chunkContainer.AddComponent<ChunkPosition>();
+        chunkContainer.GetComponent<ChunkPosition>().ChunkPositionInWorld = new Vector2(chunkCoordinates.x, chunkCoordinates.y);
 
         GameObject center = Instantiate(centerMarkerPrefab, chunkContainer.transform);
         center.transform.localPosition = new Vector3(chunkSize / 2 - roomSize, 12f, chunkSize / 2 - roomSize);
@@ -166,12 +172,15 @@ public class Chunk : MonoBehaviour
     public void DestroySelf()
     {
         currentChunkRooms.Clear();
+        if (chunkContainer == null) return;
 
         foreach (Transform children in chunkContainer.transform)
         {
+            if (children == null) continue;
+
             if (children.GetComponent<Room>() != null)
             {
-                GenerationManager.rooms.Remove(children.gameObject);
+                rooms.Remove(children.gameObject);
             }
 
             Destroy(children.gameObject);
