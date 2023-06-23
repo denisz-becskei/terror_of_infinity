@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6881419983490652128}
   - component: {fileID: 8329805873576468396}
-  - component: {fileID: 3651652564377256117}
+  - component: {fileID: 1314871501131821202}
   m_Layer: 0
   m_Name: RoomType_SW_T1
   m_TagString: BitWorldRoom
@@ -82,7 +82,7 @@ MonoBehaviour:
   baseRoomGenOverride: 0
   groundMaterial: {fileID: 2100000, guid: d935b995a0158d940a21f05fba66c53d, type: 2}
   roofMaterial: {fileID: 2100000, guid: e9c93d95c84b6bd468aae6c0ee56f955, type: 2}
---- !u!114 &3651652564377256117
+--- !u!114 &1314871501131821202
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4837790218605412414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f24cea9e8ecf15a468e030021f66db6a, type: 3}
+  m_Script: {fileID: 11500000, guid: d9b8ca2d6f5cdbe488bbd2c76343f6d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &936136478226122626

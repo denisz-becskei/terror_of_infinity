@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c69a3ce3b54e64c9a90c12055fc5ac, type: 3}
+  m_Name: BrightOfAngels
+  m_EditorClassIdentifier: 
+  chunkType: 16
+  ranges: {x: 0.5, y: 1, z: 0.7, w: 0.8}
+  roomPrefabs:
+  - {fileID: 4837790218605412414, guid: bc9fa98da9656e145be4e992c2baa0db, type: 3}
+  - {fileID: 4837790218605412414, guid: 627b108656a4b0443bb09135329178b7, type: 3}
+  - {fileID: 4837790218605412414, guid: d7756933869ba3a4ba52c9d67b6dfac9, type: 3}
+  - {fileID: 4837790218605412414, guid: fcd59c4645fd95745905a953be0ea88a, type: 3}
+  - {fileID: 4837790218605412414, guid: e34d57aa77d7cfa46bf25e9f61bc02ee, type: 3}
+  - {fileID: 4837790218605412414, guid: 0672f61e8e29b3d428754a60dea87e91, type: 3}
+  emptyRoomPrefab: {fileID: 4837790218605412414, guid: 8e5758977e6b28d418a2bdfc07b7d153,
+    type: 3}
+  lightPrefab: {fileID: 0}
+  mapBrightness: 0
+  mapEmptiness: 10

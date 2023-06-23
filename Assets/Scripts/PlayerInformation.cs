@@ -50,12 +50,15 @@ public class PlayerInformation : MonoBehaviour, IDataPersistance
         if(currentChunkType == ChunkType.ChromaticConondrum)
         {
             sinewave.SetActive(true);
+            sinewave.GetComponentInChildren<Sinewave>().isActive = true;
             sinewaveTexture.SetActive(true);
             ccp.isEnabled = true;
+
         }
         else if(currentChunkType != ChunkType.ChromaticConondrum && (sinewave.activeSelf || ccp.enabled))
         {
             sinewave.GetComponentInChildren<Sinewave>().flashlight.Interrupt();
+            sinewave.GetComponentInChildren<Sinewave>().isActive = false;
             sinewave.SetActive(false);
             sinewaveTexture.SetActive(false);
             
@@ -85,11 +88,9 @@ public class PlayerInformation : MonoBehaviour, IDataPersistance
 
         if (Physics.Raycast(transform.position, dwn, out hit, 4))
         {
-            Debug.Log(hit.transform.gameObject.name);
             if (hit.transform.gameObject.CompareTag("Ground"))
             {
                 var rp = hit.transform.parent.GetComponent<RoomPosition>();
-                Debug.Log(rp);
                 if (rp != null)
                 {
                     playerCurrentWorldPosition = rp.coordinates;

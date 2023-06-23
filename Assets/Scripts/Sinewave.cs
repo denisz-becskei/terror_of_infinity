@@ -11,9 +11,10 @@ public class Sinewave : MonoBehaviour
     private int points = 45;
     private float frequency = 1;
     private float speed = 1;
+    private float deltaSpeed = 0.02f;
     private float timer = 0;
 
-    private bool isActive = true;
+    public bool isActive = false;
 
     int frameCount = 0;
     bool reset = false;
@@ -89,14 +90,14 @@ public class Sinewave : MonoBehaviour
             StartCoroutine(Pause());
         }
 
-        if(frequency > 1 && frequency <= 1.02f)
+        if(frequency > 1 && frequency <= 1 + deltaSpeed)
         {
             timer = 0;
-            speed += 0.02f;
+            speed += deltaSpeed;
         }
         else if(frequency > 1)
         {
-            speed += 0.02f;
+            speed += deltaSpeed;
         }
     }
 
@@ -113,6 +114,7 @@ public class Sinewave : MonoBehaviour
         float currentDeltaTime = Time.timeSinceLevelLoad;
         timer += currentDeltaTime - lastDeltaTime;
         lastDeltaTime = currentDeltaTime;
+        Debug.Log(timer);
     }
 
     Color RandomColorSelector()

@@ -58,7 +58,7 @@ public class DeathHandler : MonoBehaviour, IDataPersistance
         dpm.SaveGame();
         NukeWorld();
 
-        player.GetComponent<FirstPersonMovement>().TeleportToPositionalCoordinates(new Vector3(0, -99, 0));
+        player.GetComponent<FirstPersonMovement>().TeleportToPositionalCoordinates(new Vector3(0, -165, 0));
         player.GetComponent<PlayerInformation>().currentChunkType = GenerationManager.ChunkType.Purgatory;
         player.GetComponent<PlayerInformation>().ChunkUpdateAction();
 

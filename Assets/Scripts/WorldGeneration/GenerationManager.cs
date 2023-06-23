@@ -32,6 +32,8 @@ public class GenerationManager : MonoBehaviour
         TheRottingCrypts,
         GateToReality,
         ChromaticConondrum,
+        BrightOfAngels,
+
         Purgatory
     }
 
@@ -87,7 +89,7 @@ public class GenerationManager : MonoBehaviour
         player.SetActive(false);
 
         GameObject cleanRoom = WorldWideScripts.GetFirstCleanRoomInChunkByPos(new Vector2(2, 2));
-        player.transform.position = new Vector3(cleanRoom.transform.position.x, 2f, cleanRoom.transform.position.z);
+        player.transform.position = new Vector3(cleanRoom.transform.position.x, 3f, cleanRoom.transform.position.z);
 
         player.SetActive(true);
         pi = player.GetComponent<PlayerInformation>();
@@ -145,6 +147,7 @@ public class GenerationManager : MonoBehaviour
         ChunkData currentChunkData = markers[minIndex].transform.parent.GetComponent<ChunkData>();
         pi.currentChunkType = currentChunkData.chunkType;
         Vector2 currentChunk = currentChunkData.chunkPosition;
+        Debug.Log("Player is currently at coordinates: " + currentChunkData.GetComponent<ChunkPosition>().GetChunkPositionInWorld());
         pi.ChunkUpdateAction();
 
 
@@ -179,6 +182,8 @@ public class GenerationManager : MonoBehaviour
                 }
             }
         }
+
+        Debug.Log("Running ChunkChecker™");
     }
 
     private void Rebake()
