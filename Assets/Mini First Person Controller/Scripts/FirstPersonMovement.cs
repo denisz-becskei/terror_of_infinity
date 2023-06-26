@@ -29,7 +29,7 @@ public class FirstPersonMovement : MonoBehaviour
     private void Start()
     {
         pi = GetComponent<PlayerInformation>();
-        enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyController>();
+        //enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyController>();
     }
 
     void FixedUpdate()

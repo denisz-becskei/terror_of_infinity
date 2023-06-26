@@ -3,6 +3,7 @@ using Unity.AI.Navigation;
 using UnityEngine;
 using System.Linq;
 using System;
+using System.Collections;
 
 public class GenerationManager : MonoBehaviour
 {
@@ -60,6 +61,8 @@ public class GenerationManager : MonoBehaviour
     private GetChunkType gct;
     private PlayerInformation pi;
 
+    private Coroutine navMeshUpdateRoutine;
+
 
     private void Start()
     {
@@ -79,7 +82,12 @@ public class GenerationManager : MonoBehaviour
 
         // TODO:
         // Trigger Enemy
-        //Rebake();
+        Rebake();
+        if(navMeshUpdateRoutine == null)
+        {
+            navMeshUpdateRoutine = StartCoroutine(UpdateNavMesh());
+        }
+
         //enemyController.GetComponent<EnemyController>().enemyState = EnemyController.EnemyState.Harass;
     }
 
@@ -189,5 +197,12 @@ public class GenerationManager : MonoBehaviour
     private void Rebake()
     {
         nms.BuildNavMesh();
+    }
+    
+    IEnumerator UpdateNavMesh()
+    {
+        yield return new WaitForSeconds(2f);
+        Rebake();
+        navMeshUpdateRoutine = StartCoroutine(UpdateNavMesh());
     }
 }

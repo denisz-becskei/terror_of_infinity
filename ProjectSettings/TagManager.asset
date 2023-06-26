@@ -21,6 +21,7 @@ TagManager:
   - YouDiedUIElement
   - ContinueButton
   - DataPersistance
+  - FallenAngel
   layers:
   - Default
   - TransparentFX

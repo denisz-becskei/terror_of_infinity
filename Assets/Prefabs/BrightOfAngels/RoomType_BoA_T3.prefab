@@ -429,14 +429,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 620877502314332982, guid: a47d81c4e5189564c829f3436adddce3, type: 3}
-  - {fileID: 5716912951951090967, guid: d594a57946becea4e8ebdbecf0427697, type: 3}
-  prefabScaleValues:
-  - {x: 0.8, y: 4, z: 0.8}
-  - {x: 0.0005, y: 0.0025, z: 0.0005}
+  - {fileID: 3476278726369127270, guid: a47d81c4e5189564c829f3436adddce3, type: 3}
   spawnChance: 5
   spawnProxy: 49
-  localRotation: {x: 180, y: 0, z: 0}
+  rotationY: 0
 --- !u!1 &4837790218605412414
 GameObject:
   m_ObjectHideFlags: 0
