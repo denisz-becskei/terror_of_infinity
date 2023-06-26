@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centerAvailable: 1
   baseRoomGenOverride: 0
-  groundMaterial: {fileID: 2100000, guid: 2f0b76b7855642c4793c7d7a6214237e, type: 2}
-  roofMaterial: {fileID: 2100000, guid: 2f0b76b7855642c4793c7d7a6214237e, type: 2}
+  groundMaterial: {fileID: 2100000, guid: a36f7de3c6ba48048a079b51bf4de25f, type: 2}
+  roofMaterial: {fileID: 2100000, guid: a36f7de3c6ba48048a079b51bf4de25f, type: 2}
