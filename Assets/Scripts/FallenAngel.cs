@@ -6,64 +6,90 @@ public class FallenAngel : MonoBehaviour
 {
     public bool isActive = false;
     private bool isBeingLookedAt = false;
-    private bool setIntoAction = false;
     private NavMeshAgent nma;
     private GameObject player;
-    private Renderer renderer;
+    private DeathHandler dh;
 
+    private Camera fpsCamera;
+    private Bounds bounds;
+    private Plane[] cameraFrustrum;
+    
     private Coroutine updatePathingRoutine;
+
+    private float rotationY;
 
     private void Awake()
     {
-        renderer = GetComponentInChildren<Renderer>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Start()
     {
+        gameObject.AddComponent<BoxCollider>();
+        bounds = GetComponent<BoxCollider>().bounds;
+        fpsCamera = player.GetComponentInChildren<Camera>();
+        rotationY = transform.rotation.y;
+        dh = GameObject.FindGameObjectWithTag("GameController").GetComponent<DeathHandler>();
         StartCoroutine(LateStart());
     }
 
     private void Update()
     {
-        LookedAtTest();
-
-        if(isActive && !setIntoAction && !isBeingLookedAt)
+        if (isActive)
         {
-            setIntoAction = true;
-            updatePathingRoutine = StartCoroutine(UpdatePathing());
-            Debug.Log("Angel was triggered");
+            LookedAtTest();
         }
 
-        if(updatePathingRoutine != null && isBeingLookedAt)
+        if (isActive && !isBeingLookedAt)
         {
-            nma.isStopped = true;
-            updatePathingRoutine = null;
-            setIntoAction = false;
+            updatePathingRoutine = StartCoroutine(UpdatePathing());
+        } else
+        {
+            if(updatePathingRoutine != null)
+            {
+                StopCoroutine(updatePathingRoutine);
+                StopNavigation();
+                updatePathingRoutine = null;
+            }
         }
     }
 
     private void LookedAtTest()
     {
-        if(renderer.isVisible)
+        cameraFrustrum = GeometryUtility.CalculateFrustumPlanes(fpsCamera);
+        if(GeometryUtility.TestPlanesAABB(cameraFrustrum, bounds))
         {
             isBeingLookedAt = true;
+            Debug.Log("Angel is being looked at.");
         } else
         {
+            Debug.Log("Angel is no longer being looked at.");
             isBeingLookedAt = false;
         }
     }
 
-    public void Move(Vector3 position)
+    private void Move(Vector3 position)
     {
+        nma.isStopped = false;
+        Quaternion _lookRotation = Quaternion.LookRotation((player.transform.position - transform.position).normalized);
+        transform.rotation = new Quaternion(_lookRotation.x, _lookRotation.y - rotationY, _lookRotation.z, _lookRotation.w);
         nma.SetDestination(position);
+    }
+
+    private void StopNavigation()
+    {
+        nma.velocity = Vector3.zero;
+        nma.isStopped = true;
     }
 
     IEnumerator UpdatePathing()
     {
-        yield return new WaitForSeconds(1f);
         Move(player.transform.position);
-        updatePathingRoutine = StartCoroutine(UpdatePathing());
+        yield return new WaitForSeconds(1f);
+        if(!isBeingLookedAt)
+        {
+            updatePathingRoutine = StartCoroutine(UpdatePathing());
+        }
     }
 
     IEnumerator LateStart()
@@ -75,10 +101,21 @@ public class FallenAngel : MonoBehaviour
         {
             gameObject.transform.position = closestHit.position;
             nma = gameObject.AddComponent<NavMeshAgent>();
+            nma.baseOffset = 0;
+            nma.speed = 16f;
+            nma.acceleration = 16f;
         }
         else
         {
             Debug.LogError("Could not find position on NavMesh!");
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(isActive && !isBeingLookedAt && collision.gameObject.CompareTag("Player"))
+        {
+            dh.StartDeathSequence("ASCENDED.");
         }
     }
 

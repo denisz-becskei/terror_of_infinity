@@ -155,7 +155,6 @@ public class GenerationManager : MonoBehaviour
         ChunkData currentChunkData = markers[minIndex].transform.parent.GetComponent<ChunkData>();
         pi.currentChunkType = currentChunkData.chunkType;
         Vector2 currentChunk = currentChunkData.chunkPosition;
-        Debug.Log("Player is currently at coordinates: " + currentChunkData.GetComponent<ChunkPosition>().GetChunkPositionInWorld());
         pi.ChunkUpdateAction();
 
 
@@ -190,8 +189,6 @@ public class GenerationManager : MonoBehaviour
                 }
             }
         }
-
-        Debug.Log("Running ChunkChecker™");
     }
 
     private void Rebake()
