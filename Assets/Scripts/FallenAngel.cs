@@ -9,6 +9,7 @@ public class FallenAngel : MonoBehaviour
     private NavMeshAgent nma;
     private GameObject player;
     private DeathHandler dh;
+    private GenerationManager gm;
 
     private Camera fpsCamera;
     private Bounds bounds;
@@ -30,6 +31,7 @@ public class FallenAngel : MonoBehaviour
         fpsCamera = player.GetComponentInChildren<Camera>();
         rotationY = transform.rotation.y;
         dh = GameObject.FindGameObjectWithTag("GameController").GetComponent<DeathHandler>();
+        gm = GameObject.FindGameObjectWithTag("GenerationController").GetComponent<GenerationManager>();
         StartCoroutine(LateStart());
     }
 
@@ -96,6 +98,7 @@ public class FallenAngel : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         NavMeshHit closestHit;
+        gm.Rebake();
 
         if (NavMesh.SamplePosition(gameObject.transform.position, out closestHit, 500f, NavMesh.AllAreas))
         {
@@ -107,7 +110,7 @@ public class FallenAngel : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Could not find position on NavMesh!");
+            Debug.LogError("Could not find position on NavMesh! Retrying.");
         }
     }
 

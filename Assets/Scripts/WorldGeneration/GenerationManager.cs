@@ -83,10 +83,10 @@ public class GenerationManager : MonoBehaviour
         // TODO:
         // Trigger Enemy
         Rebake();
-        if(navMeshUpdateRoutine == null)
-        {
-            navMeshUpdateRoutine = StartCoroutine(UpdateNavMesh());
-        }
+        //if(navMeshUpdateRoutine == null)
+        //{
+        //    navMeshUpdateRoutine = StartCoroutine(UpdateNavMesh());
+        //}
 
         //enemyController.GetComponent<EnemyController>().enemyState = EnemyController.EnemyState.Harass;
     }
@@ -156,6 +156,7 @@ public class GenerationManager : MonoBehaviour
         pi.currentChunkType = currentChunkData.chunkType;
         Vector2 currentChunk = currentChunkData.chunkPosition;
         pi.ChunkUpdateAction();
+        Rebake();
 
 
         // If this iteration contains more Chunks than ChunkLimit, then remove 10% of the Chunks that are the farthest from the player
@@ -191,7 +192,7 @@ public class GenerationManager : MonoBehaviour
         }
     }
 
-    private void Rebake()
+    public void Rebake()
     {
         nms.BuildNavMesh();
     }
