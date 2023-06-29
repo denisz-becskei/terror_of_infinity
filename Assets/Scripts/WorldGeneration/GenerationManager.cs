@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 
 public class GenerationManager : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class GenerationManager : MonoBehaviour
         GateToReality,
         ChromaticConondrum,
         BrightOfAngels,
+        DimensionalRift,
 
         Purgatory
     }
@@ -61,6 +63,8 @@ public class GenerationManager : MonoBehaviour
     private GetChunkType gct;
     private PlayerInformation pi;
 
+    private bool navMeshBuildConcluded = false;
+
     private Coroutine navMeshUpdateRoutine;
 
 
@@ -82,7 +86,7 @@ public class GenerationManager : MonoBehaviour
 
         // TODO:
         // Trigger Enemy
-        Rebake();
+        Rebake("Build");
         //if(navMeshUpdateRoutine == null)
         //{
         //    navMeshUpdateRoutine = StartCoroutine(UpdateNavMesh());
@@ -104,11 +108,11 @@ public class GenerationManager : MonoBehaviour
         //Camera.main.gameObject.SetActive(false);
     }
 
-    private void GenerateChunkAtPosition(float x, float y)
+    private void GenerateChunkAtPosition(int x, int y)
     {
         Chunk chunk = chunkHandler.AddComponent<Chunk>();
 
-        if(chunkOverride == ChunkType.None)
+        if (chunkOverride == ChunkType.None)
         {
             chunk.Setup(blockSize,
                     gct.GetChunkAtPosition(Mathf.FloorToInt(x), Mathf.FloorToInt(y)),
@@ -116,7 +120,8 @@ public class GenerationManager : MonoBehaviour
                     centerMarkerPrefab,
                     enemyController.GetComponent<EnemyController>(),
                     new Vector2(x, y));
-        } else
+        }
+        else
         {
             chunk.Setup(blockSize,
                     gct.OverrideChunkType(chunkOverride),
@@ -126,6 +131,7 @@ public class GenerationManager : MonoBehaviour
                     new Vector2(x, y));
         }
         chunk.Generate();
+        ChunkMap.SetValue(x, y, WorldWideScripts.ChunkTypeToAbbrString(chunk.GetChunkType()));
         chunks.Add(chunk);
     }
 
@@ -145,18 +151,24 @@ public class GenerationManager : MonoBehaviour
     {
         // Get the Chunk Coordinates where the player stands
         GameObject[] markers = GameObject.FindGameObjectsWithTag("Marker");
+
         float[] distances = new float[markers.Length];
         for (int i = 0; i < markers.Length; i++)
         {
             distances[i] = WorldWideScripts.CalculateDistance(player, markers[i]);
         }
+
         int minIndex = Enumerable.Range(0, distances.Length).Aggregate((a, b) => (distances[a] < distances[b]) ? a : b);
 
         ChunkData currentChunkData = markers[minIndex].transform.parent.GetComponent<ChunkData>();
         pi.currentChunkType = currentChunkData.chunkType;
         Vector2 currentChunk = currentChunkData.chunkPosition;
         pi.ChunkUpdateAction();
-        Rebake();
+
+        //if(navMeshBuildConcluded)
+        //{
+        //    Rebake("Update");
+        //}
 
 
         // If this iteration contains more Chunks than ChunkLimit, then remove 10% of the Chunks that are the farthest from the player
@@ -166,10 +178,11 @@ public class GenerationManager : MonoBehaviour
             int countToRemove = Mathf.CeilToInt(originalChunkCount * 0.1f);
             for (int i = 0; i < countToRemove; i++)
             {
-                int farthestChunkIndex = Array.IndexOf(distances, distances.Max());
+                int farthestChunkIndex = FindFarthestChunkIndex(distances);
                 Vector2 chunkPosition = markers[farthestChunkIndex].transform.parent.GetComponent<ChunkData>().chunkPosition;
                 Chunk chunkToDestroy = WorldWideScripts.GetChunkByCoordinate(chunkPosition);
                 chunks.Remove(chunkToDestroy);
+                ChunkMap.RemoveIndex((int)chunkPosition.x, (int)chunkPosition.y);
                 chunkToDestroy.DestroySelf();
                 distances[farthestChunkIndex] = Mathf.NegativeInfinity;
             }
@@ -182,25 +195,45 @@ public class GenerationManager : MonoBehaviour
         {
             for (int j = -halfRange; j <= halfRange; j++)
             {
-                if (i == 0 && j == 0) continue; // Unncecessary to check the chunk the player is standing in
+                if (i == 0 && j == 0) continue; // Unnecessary to check the chunk the player is standing in
                 Vector2 chunkPosition = currentChunk + new Vector2(i, j);
-                if (WorldWideScripts.GetChunkByCoordinate(chunkPosition) == null) // If the Chunk doesn't exist
+                if (ChunkMap.GetValue((int)chunkPosition.x, (int)chunkPosition.y) == "0") // If the Chunk doesn't exist
                 {
-                    GenerateChunkAtPosition(chunkPosition.x, chunkPosition.y); // Generate the Chunk @ that position
+                    GenerateChunkAtPosition((int)chunkPosition.x, (int)chunkPosition.y); // Generate the Chunk @ that position
                 }
             }
         }
     }
 
-    public void Rebake()
+    private int FindFarthestChunkIndex(float[] distances)
     {
-        nms.BuildNavMesh();
+        int farthestChunkIndex = -1;
+        float farthestDistance = Mathf.NegativeInfinity;
+        for (int i = 0; i < distances.Length; i++)
+        {
+            if (distances[i] > farthestDistance)
+            {
+                farthestDistance = distances[i];
+                farthestChunkIndex = i;
+            }
+        }
+        return farthestChunkIndex;
     }
-    
-    IEnumerator UpdateNavMesh()
+
+    public void Rebake(string action)
     {
-        yield return new WaitForSeconds(2f);
-        Rebake();
-        navMeshUpdateRoutine = StartCoroutine(UpdateNavMesh());
+        switch (action)
+        {
+            case "Build":
+                nms.BuildNavMesh();
+                navMeshBuildConcluded = true;
+                break;
+            case "Update":
+                nms.UpdateNavMesh(nms.navMeshData);
+                break;
+            default:
+                Debug.LogError("HOLD UP! WE ARE NOT SUPPOSED TO BE HERE");
+                break;
+        }
     }
 }

@@ -5,7 +5,12 @@ public class Spawner : MonoBehaviour
     [SerializeField] GameObject[] prefabs;
     [SerializeField] int spawnChance;
     [SerializeField] int spawnProxy;
-    [SerializeField] float rotationY;
+    
+    [SerializeField] bool randomRotation;
+    [SerializeField] bool randomScale;
+
+    [SerializeField] float[] rotations;
+    [SerializeField] float[] scales;
 
     private GameObject player;
     private GameObject prefabToSpawn;
@@ -40,9 +45,27 @@ public class Spawner : MonoBehaviour
     void Spawn()
     {
         spawnerActive[0] = false;
-        GameObject spawned = Instantiate(prefabToSpawn, transform.parent);
+        GameObject spawned = Instantiate(prefabToSpawn);
+        if (randomRotation) {
+            spawned.transform.rotation = Quaternion.Euler(spawned.transform.rotation.x, spawned.transform.rotation.y + rotations[Random.Range(0, rotations.Length)], spawned.transform.rotation.z);
+        } else
+        {
+            spawned.transform.rotation = Quaternion.Euler(spawned.transform.rotation.x, spawned.transform.rotation.y + rotations[0], spawned.transform.rotation.z);
+        }
+
+        if (randomScale)
+        {
+            float randomScale = scales[Random.Range(0, scales.Length)];
+            spawned.transform.localScale = new Vector3(randomScale, randomScale, randomScale);
+        }
+        else
+        {
+            spawned.transform.localScale = new Vector3(scales[0], scales[0], scales[0]);
+        }
+
+        
+        spawned.transform.parent = transform.parent;
         spawned.transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + 1f, transform.localPosition.z);
-        spawned.transform.rotation = Quaternion.Euler(spawned.transform.rotation.x, spawned.transform.rotation.y + rotationY, spawned.transform.rotation.z);
 
         Destroy(gameObject, 2f);
     }

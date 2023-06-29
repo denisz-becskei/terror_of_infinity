@@ -98,7 +98,7 @@ public class FallenAngel : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         NavMeshHit closestHit;
-        gm.Rebake();
+        gm.Rebake("Update");
 
         if (NavMesh.SamplePosition(gameObject.transform.position, out closestHit, 500f, NavMesh.AllAreas))
         {

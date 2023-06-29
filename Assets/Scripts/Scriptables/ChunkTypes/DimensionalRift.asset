@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c69a3ce3b54e64c9a90c12055fc5ac, type: 3}
+  m_Name: DimensionalRift
+  m_EditorClassIdentifier: 
+  chunkType: 17
+  ranges: {x: 0.3, y: 0.8, z: 0.8, w: 0.9}
+  roomPrefabs:
+  - {fileID: 4837790218605412414, guid: 4e9f002c701bc56409696bbc81273bde, type: 3}
+  - {fileID: 4837790218605412414, guid: eb3c85de42a51d945baa4732d2e4e07b, type: 3}
+  - {fileID: 4837790218605412414, guid: 5d4322030de7b1c46bb712a25a7ccfe5, type: 3}
+  - {fileID: 4837790218605412414, guid: 3660c9da921afb14aaec712f8d836156, type: 3}
+  emptyRoomPrefab: {fileID: 4837790218605412414, guid: 5a610addf5b07314e898e9369408ac33,
+    type: 3}
+  lightPrefab: {fileID: 0}
+  mapBrightness: 7
+  mapEmptiness: 5

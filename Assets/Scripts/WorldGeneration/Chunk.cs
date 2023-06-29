@@ -169,6 +169,11 @@ public class Chunk : MonoBehaviour
         return chunkContainer;
     }
 
+    public ChunkType GetChunkType()
+    {
+        return type;
+    }
+
     public void DestroySelf()
     {
         currentChunkRooms.Clear();
