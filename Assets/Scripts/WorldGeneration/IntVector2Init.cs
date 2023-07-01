@@ -47,5 +47,10 @@ public class IntVector2Init : MonoBehaviour
         {
             return HashCode.Combine(x, y);
         }
+
+        public override string ToString()
+        {
+            return x.ToString() + ":" + y.ToString();
+        }
     }
 }

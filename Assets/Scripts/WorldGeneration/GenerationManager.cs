@@ -53,6 +53,8 @@ public class GenerationManager : MonoBehaviour
     private readonly int chunkLimit = 36;
     private readonly int baseChunkAmt = 5;
 
+    public int chunksGenerated = 0;
+
     public GenerationState currentState = GenerationState.Idle;
 
     private List<Chunk> chunks;
@@ -127,6 +129,7 @@ public class GenerationManager : MonoBehaviour
         chunk.Generate();
         ChunkMap.SetValue(position, WorldWideScripts.ChunkTypeToAbbrString(chunk.GetChunkType()));
         chunks.Add(chunk);
+        chunksGenerated++;
     }
 
     private void GenerateStartChunks()
@@ -156,10 +159,10 @@ public class GenerationManager : MonoBehaviour
         pi.currentChunkType = WorldWideScripts.GetChunkByCoordinate(currentChunk).GetChunkType();
         pi.ChunkUpdateAction();
 
-        //if(navMeshBuildConcluded)
-        //{
-        //    Rebake("Update");
-        //}
+        if (navMeshBuildConcluded)
+        {
+            Rebake("Update");
+        }
 
         // If this iteration contains more Chunks than ChunkLimit, then remove 10% of the Chunks that are the farthest from the player
         int originalChunkCount = currentChunkCount;
@@ -169,14 +172,16 @@ public class GenerationManager : MonoBehaviour
             int countToRemove = Mathf.CeilToInt(originalChunkCount * 0.1f);
             for (int i = 0; i < countToRemove; i++)
             {
-                
                 IntVector2 chunkPosition = orderedDistances.Last().Key;
                 Chunk chunkToDestroy = WorldWideScripts.GetChunkByCoordinate(chunkPosition);
                 chunks.Remove(chunkToDestroy);
                 ChunkMap.RemoveIndex(chunkPosition);
+                orderedDistances.Remove(chunkPosition);
+
                 chunkToDestroy.DestroySelf();
             }
             chunkCountBeforeDeletion -= countToRemove;
+            chunksGenerated = ChunkMap.GetMapLength();
         }
 
 

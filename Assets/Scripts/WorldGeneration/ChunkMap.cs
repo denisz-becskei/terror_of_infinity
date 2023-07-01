@@ -3,7 +3,7 @@ using static IntVector2Init;
 
 public class ChunkMap
 {
-    private static readonly Dictionary<IntVector2, string> Map= new Dictionary<IntVector2, string>();
+    private static readonly Dictionary<IntVector2, string> Map = new Dictionary<IntVector2, string>();
 
     public static void SetValue(IntVector2 position, string value)
     {
