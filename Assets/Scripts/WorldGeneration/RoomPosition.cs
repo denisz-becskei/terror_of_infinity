@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RoomPosition : MonoBehaviour
 {
-    public ChunkPosition ContainerChunkPosition { get; set; }
+    public ChunkData ContainerChunkPosition { get; set; }
     public Vector2 RoomPositionInContainer { get; set; }
     public string coordinates;
 

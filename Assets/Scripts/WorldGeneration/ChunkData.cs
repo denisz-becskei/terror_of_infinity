@@ -1,31 +1,16 @@
 using System.Collections;
 using UnityEngine;
 using static GenerationManager;
+using static IntVector2Init;
 
 public class ChunkData : MonoBehaviour
 {
-    public Vector2 chunkPosition;
+    public IntVector2 ChunkPositionInWorld { get; set; }
     public ChunkType chunkType;
-    public Coroutine despawnSafeguard;
 
-    private GameObject player;
-
-    private void Start()
+    public string GetChunkPositionInWorld()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        despawnSafeguard = StartCoroutine(DespawnSafeguard());
-    }
-
-    IEnumerator DespawnSafeguard()
-    {
-        yield return new WaitForSeconds(WorldWideScripts.GetTotallyRandomNumberBetween(15, 30));
-        if(WorldWideScripts.CalculateDistance(this.gameObject, player) > 49 * 6)
-        {
-            Destroy(gameObject);
-        } else
-        {
-            despawnSafeguard = StartCoroutine(DespawnSafeguard());
-        }
+        return ChunkPositionInWorld.x.ToString() + ":" + ChunkPositionInWorld.y.ToString();
     }
 
 }

@@ -1,24 +1,35 @@
 using System.Collections.Generic;
+using static IntVector2Init;
 
 public class ChunkMap
 {
-    private static readonly Dictionary<(int, int), string> Map= new Dictionary<(int, int), string>();
+    private static readonly Dictionary<IntVector2, string> Map= new Dictionary<IntVector2, string>();
 
-    public static void SetValue(int x, int y, string value)
+    public static void SetValue(IntVector2 position, string value)
     {
-        Map[(x, y)] = value;
+        Map[position] = value;
     }
 
-    public static string GetValue(int x, int y)
+    public static string GetValue(IntVector2 position)
     {
-        if (Map.TryGetValue((x, y), out string value))
+        if (Map.TryGetValue(position, out string value))
             return value;
         else
             return "0";
     }
 
-    public static void RemoveIndex(int x, int y)
+    public static Dictionary<IntVector2, string> GetMap()
     {
-        Map.Remove((x, y));
+        return Map;
+    }
+
+    public static void RemoveIndex(IntVector2 position)
+    {
+        Map.Remove(position);
+    }
+
+    public static int GetMapLength()
+    {
+        return Map.Count;
     }
 }

@@ -1078,8 +1078,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00592c1fbd2ef1e4d92220f315b20183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  centerMarkerPrefab: {fileID: 7423516794790261400, guid: a0020ff724316d841b8d8f0d93fe32ec,
-    type: 3}
   worldGrid: {fileID: 722317456}
   player: {fileID: 637959494}
   chunkHandler: {fileID: 1222217641}
@@ -2179,7 +2177,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1073000556
 Transform:
   m_ObjectHideFlags: 0

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using static GenerationManager;
+using static IntVector2Init;
 
 public class Chunk : MonoBehaviour
 {
@@ -20,13 +20,13 @@ public class Chunk : MonoBehaviour
     private int chunkSizeSqrt;
 
     // GameObjects from Controller
-    private GameObject emptyRoomPrefab, lightPrefab, centerMarkerPrefab, worldGrid;
+    private GameObject emptyRoomPrefab, lightPrefab, worldGrid;
     private List<GameObject> roomPrefabs;
     private EnemyController ec;
 
     private GenerationState currentState = GenerationState.Idle;
 
-    public Vector2 chunkCoordinates = new Vector2();
+    public IntVector2 chunkCoordinates = new IntVector2();
     private GameObject chunkContainer;
     private GenerationManager gm;
 
@@ -42,15 +42,13 @@ public class Chunk : MonoBehaviour
         Random.InitState((int)GAME_SEED);
     }
 
-    public void Setup(int chunkSize, ChunkTypeScriptableObject chunkType, GameObject worldGrid,
-        GameObject centerMarkerPrefab, EnemyController ec, Vector2 chunkCoordinates)
+    public void Setup(int chunkSize, ChunkTypeScriptableObject chunkType, GameObject worldGrid, EnemyController ec, IntVector2 chunkCoordinates)
     {
         this.chunkSize = chunkSize;
         this.mapBrightness = chunkType.mapBrightness;
         this.mapEmptiness = chunkType.mapEmptiness;
         this.type = chunkType.chunkType;
         this.emptyRoomPrefab = chunkType.emptyRoomPrefab;
-        this.centerMarkerPrefab = centerMarkerPrefab;
         this.worldGrid = worldGrid;
         this.roomPrefabs = new List<GameObject>(chunkType.roomPrefabs);
 
@@ -97,7 +95,7 @@ public class Chunk : MonoBehaviour
                     case GenerationState.GeneratingRooms:
                         GameObject newRoom = Instantiate(roomPrefabs[Random.Range(0, roomPrefabs.Count)], chunkContainer.transform);
                         RoomPosition rp = newRoom.AddComponent<RoomPosition>();
-                        rp.ContainerChunkPosition = chunkContainer.GetComponent<ChunkPosition>();
+                        rp.ContainerChunkPosition = chunkContainer.GetComponent<ChunkData>();
                         rp.RoomPositionInContainer = new Vector2(roomCoordX, roomCoordY);
                         newRoom.transform.localPosition = currentPos;
                         newRoom.transform.rotation = Quaternion.identity;
@@ -153,15 +151,9 @@ public class Chunk : MonoBehaviour
         chunkContainer.GetComponent<BoxCollider>().isTrigger = true;
         chunkContainer.AddComponent<ChunkChecker>().gm = gm;
 
-        chunkContainer.AddComponent<ChunkPosition>();
-        chunkContainer.GetComponent<ChunkPosition>().ChunkPositionInWorld = new Vector2(chunkCoordinates.x, chunkCoordinates.y);
-
-        GameObject center = Instantiate(centerMarkerPrefab, chunkContainer.transform);
-        center.transform.localPosition = new Vector3(chunkSize / 2 - roomSize, 12f, chunkSize / 2 - roomSize);
-        center.transform.parent.AddComponent<ChunkData>();
-        center.transform.parent.GetComponent<ChunkData>().chunkPosition = chunkCoordinates;
-        center.transform.parent.GetComponent<ChunkData>().chunkType = type;
-        center.tag = "Marker";
+        chunkContainer.AddComponent<ChunkData>();
+        chunkContainer.GetComponent<ChunkData>().chunkType = type;
+        chunkContainer.GetComponent<ChunkData>().ChunkPositionInWorld = new IntVector2(chunkCoordinates.x, chunkCoordinates.y);
     }
 
     public GameObject GetParent()

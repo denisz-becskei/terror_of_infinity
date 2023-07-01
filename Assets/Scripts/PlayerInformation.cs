@@ -72,7 +72,7 @@ public class PlayerInformation : MonoBehaviour, IDataPersistance
             updatePositionRoutine = null;
         } else if(currentChunkType != ChunkType.Purgatory && updatePositionRoutine == null)
         {
-            StartCoroutine(UpdatePlayerPosition());
+            updatePositionRoutine = StartCoroutine(UpdatePlayerPosition());
         }
     }
 
@@ -85,15 +85,15 @@ public class PlayerInformation : MonoBehaviour, IDataPersistance
     private void PositionUpdate()
     {
         Vector3 dwn = transform.TransformDirection(Vector3.down);
-
-        if (Physics.Raycast(transform.position, dwn, out hit, 4))
+        Vector3 newRaycastPosition = new Vector3(transform.position.x, transform.position.y + 3f, transform.position.z);
+        if (Physics.Raycast(newRaycastPosition, dwn, out hit, 20f))
         {
             if (hit.transform.gameObject.CompareTag("Ground"))
             {
                 var rp = hit.transform.parent.GetComponent<RoomPosition>();
                 if (rp != null)
                 {
-                    playerCurrentWorldPosition = rp.coordinates;
+                    playerCurrentWorldPosition = rp.GetRoomCoordinatesInWorld();
                 }
             }
         }

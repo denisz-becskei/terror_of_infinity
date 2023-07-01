@@ -2,9 +2,7 @@ using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
 using System.Linq;
-using System;
-using System.Collections;
-using System.Threading.Tasks;
+using static IntVector2Init;
 
 public class GenerationManager : MonoBehaviour
 {
@@ -39,8 +37,6 @@ public class GenerationManager : MonoBehaviour
 
         Purgatory
     }
-
-    [SerializeField] GameObject centerMarkerPrefab;
 
     [SerializeField] GameObject worldGrid;
     [SerializeField] GameObject player;
@@ -108,30 +104,28 @@ public class GenerationManager : MonoBehaviour
         //Camera.main.gameObject.SetActive(false);
     }
 
-    private void GenerateChunkAtPosition(int x, int y)
+    private void GenerateChunkAtPosition(IntVector2 position)
     {
         Chunk chunk = chunkHandler.AddComponent<Chunk>();
 
         if (chunkOverride == ChunkType.None)
         {
             chunk.Setup(blockSize,
-                    gct.GetChunkAtPosition(Mathf.FloorToInt(x), Mathf.FloorToInt(y)),
+                    gct.GetChunkAtPosition(position.x, position.y),
                     worldGrid,
-                    centerMarkerPrefab,
                     enemyController.GetComponent<EnemyController>(),
-                    new Vector2(x, y));
+                    position);
         }
         else
         {
             chunk.Setup(blockSize,
                     gct.OverrideChunkType(chunkOverride),
                     worldGrid,
-                    centerMarkerPrefab,
                     enemyController.GetComponent<EnemyController>(),
-                    new Vector2(x, y));
+                    position);
         }
         chunk.Generate();
-        ChunkMap.SetValue(x, y, WorldWideScripts.ChunkTypeToAbbrString(chunk.GetChunkType()));
+        ChunkMap.SetValue(position, WorldWideScripts.ChunkTypeToAbbrString(chunk.GetChunkType()));
         chunks.Add(chunk);
     }
 
@@ -141,7 +135,7 @@ public class GenerationManager : MonoBehaviour
         {
             for (int j = 0; j < baseChunkAmt; j++)
             {
-                GenerateChunkAtPosition(i, j);
+                GenerateChunkAtPosition(new IntVector2(i, j));
             }
         }
     }
@@ -149,20 +143,17 @@ public class GenerationManager : MonoBehaviour
 
     public void ChunkChecker()
     {
-        // Get the Chunk Coordinates where the player stands
-        GameObject[] markers = GameObject.FindGameObjectsWithTag("Marker");
-
-        float[] distances = new float[markers.Length];
-        for (int i = 0; i < markers.Length; i++)
+        int currentChunkCount = ChunkMap.GetMapLength();
+        Dictionary<IntVector2, float> distances = new Dictionary<IntVector2, float>();
+        IntVector2 playerPosition = WorldWideScripts.GetPositionByString(pi.playerCurrentWorldPosition)[0];
+        foreach(KeyValuePair<IntVector2, string> chunk in ChunkMap.GetMap())
         {
-            distances[i] = WorldWideScripts.CalculateDistance(player, markers[i]);
+            distances[chunk.Key] = playerPosition.DistanceBetweenPoints(chunk.Key);
         }
+        var orderedDistances = distances.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
 
-        int minIndex = Enumerable.Range(0, distances.Length).Aggregate((a, b) => (distances[a] < distances[b]) ? a : b);
-
-        ChunkData currentChunkData = markers[minIndex].transform.parent.GetComponent<ChunkData>();
-        pi.currentChunkType = currentChunkData.chunkType;
-        Vector2 currentChunk = currentChunkData.chunkPosition;
+        IntVector2 currentChunk = orderedDistances.First().Key;
+        pi.currentChunkType = WorldWideScripts.GetChunkByCoordinate(currentChunk).GetChunkType();
         pi.ChunkUpdateAction();
 
         //if(navMeshBuildConcluded)
@@ -170,22 +161,22 @@ public class GenerationManager : MonoBehaviour
         //    Rebake("Update");
         //}
 
-
         // If this iteration contains more Chunks than ChunkLimit, then remove 10% of the Chunks that are the farthest from the player
-        int originalChunkCount = chunks.Count;
-        while (chunks.Count > chunkLimit)
+        int originalChunkCount = currentChunkCount;
+        int chunkCountBeforeDeletion = currentChunkCount;
+        while (chunkCountBeforeDeletion > chunkLimit)
         {
             int countToRemove = Mathf.CeilToInt(originalChunkCount * 0.1f);
             for (int i = 0; i < countToRemove; i++)
             {
-                int farthestChunkIndex = FindFarthestChunkIndex(distances);
-                Vector2 chunkPosition = markers[farthestChunkIndex].transform.parent.GetComponent<ChunkData>().chunkPosition;
+                
+                IntVector2 chunkPosition = orderedDistances.Last().Key;
                 Chunk chunkToDestroy = WorldWideScripts.GetChunkByCoordinate(chunkPosition);
                 chunks.Remove(chunkToDestroy);
-                ChunkMap.RemoveIndex((int)chunkPosition.x, (int)chunkPosition.y);
+                ChunkMap.RemoveIndex(chunkPosition);
                 chunkToDestroy.DestroySelf();
-                distances[farthestChunkIndex] = Mathf.NegativeInfinity;
             }
+            chunkCountBeforeDeletion -= countToRemove;
         }
 
 
@@ -196,28 +187,14 @@ public class GenerationManager : MonoBehaviour
             for (int j = -halfRange; j <= halfRange; j++)
             {
                 if (i == 0 && j == 0) continue; // Unnecessary to check the chunk the player is standing in
-                Vector2 chunkPosition = currentChunk + new Vector2(i, j);
-                if (ChunkMap.GetValue((int)chunkPosition.x, (int)chunkPosition.y) == "0") // If the Chunk doesn't exist
+                IntVector2 chunkPosition = currentChunk + new IntVector2(i, j);
+                if (ChunkMap.GetValue(new IntVector2(chunkPosition.x, chunkPosition.y)) == "0") // If the Chunk doesn't exist
                 {
-                    GenerateChunkAtPosition((int)chunkPosition.x, (int)chunkPosition.y); // Generate the Chunk @ that position
+                    GenerateChunkAtPosition(new IntVector2(chunkPosition.x, chunkPosition.y)); // Generate the Chunk @ that position
                 }
             }
         }
-    }
-
-    private int FindFarthestChunkIndex(float[] distances)
-    {
-        int farthestChunkIndex = -1;
-        float farthestDistance = Mathf.NegativeInfinity;
-        for (int i = 0; i < distances.Length; i++)
-        {
-            if (distances[i] > farthestDistance)
-            {
-                farthestDistance = distances[i];
-                farthestChunkIndex = i;
-            }
-        }
-        return farthestChunkIndex;
+        //Debug.Log("Running ChunkChecker(TM)");
     }
 
     public void Rebake(string action)
