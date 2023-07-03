@@ -358,9 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centerAvailable: 1
+  baseRoomGenOverride: 0
   groundMaterial: {fileID: 2100000, guid: e1d2f71ca2201e348ae9bef054006cdc, type: 2}
   roofMaterial: {fileID: 2100000, guid: e9c93d95c84b6bd468aae6c0ee56f955, type: 2}
-  groundPrefab: {fileID: 552946829038411565, guid: 36f823acba934274785f766b3e6d204d,
-    type: 3}
-  roofPrefab: {fileID: 7814031896364862043, guid: 465c4f61cd7721d49b5617e0e7538237,
-    type: 3}
+  surfaceSound: {fileID: 11400000, guid: c556923a3390f5b469b25f401154ca79, type: 2}
