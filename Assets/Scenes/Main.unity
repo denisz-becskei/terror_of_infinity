@@ -1084,7 +1084,7 @@ MonoBehaviour:
   nms: {fileID: 954883883}
   enemyController: {fileID: 1602996568}
   blockSize: 64
-  chunkOverride: 16
+  chunkOverride: 3
   chunksGenerated: 0
   currentState: 0
 --- !u!4 &599674792

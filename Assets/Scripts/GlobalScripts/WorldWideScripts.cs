@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
 using static GenerationManager;
 using static IntVector2Init;
@@ -168,7 +167,7 @@ public class WorldWideScripts : MonoBehaviour
 
     public static IntVector2[] GetPositionByString(string positionString)
     {
-        string[] positionsSplitToChunksAndRooms = positionString.Split('-');
+        string[] positionsSplitToChunksAndRooms = positionString.Split("::");
         string[] chunkPositionString = positionsSplitToChunksAndRooms[0].Split(':');
         string[] roomPositionString = positionsSplitToChunksAndRooms[1].Split(':');
 

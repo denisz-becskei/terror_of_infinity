@@ -70,9 +70,11 @@ public class PlayerInformation : MonoBehaviour, IDataPersistance
         {
             StopCoroutine(updatePositionRoutine);
             updatePositionRoutine = null;
-        } else if(currentChunkType != ChunkType.Purgatory && updatePositionRoutine == null)
-        {
+            Debug.Log(updatePositionRoutine);
+        } else { 
             updatePositionRoutine = StartCoroutine(UpdatePlayerPosition());
+            Debug.Log("Routine Continues");
+            Debug.Log(updatePositionRoutine);
         }
     }
 

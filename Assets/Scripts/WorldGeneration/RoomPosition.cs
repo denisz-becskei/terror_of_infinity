@@ -14,6 +14,6 @@ public class RoomPosition : MonoBehaviour
     public string GetRoomCoordinatesInWorld()
     {
         return ContainerChunkPosition.ChunkPositionInWorld.x.ToString() + ":" + ContainerChunkPosition.ChunkPositionInWorld.y.ToString() + 
-            "-" + RoomPositionInContainer.x.ToString() + ":" + RoomPositionInContainer.y.ToString();
+            "::" + RoomPositionInContainer.x.ToString() + ":" + RoomPositionInContainer.y.ToString();
     }
 }

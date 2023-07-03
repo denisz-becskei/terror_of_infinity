@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: af4c89a11ba031a4ead0173245cf5543, type: 2}
+  - {fileID: 2100000, guid: 0f82c9cd3a6ea994da63e06d68b5a7ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -146,7 +146,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: af4c89a11ba031a4ead0173245cf5543, type: 2}
+  - {fileID: 2100000, guid: 0f82c9cd3a6ea994da63e06d68b5a7ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centerAvailable: 0
   baseRoomGenOverride: 0
-  groundMaterial: {fileID: 2100000, guid: e1d2f71ca2201e348ae9bef054006cdc, type: 2}
+  groundMaterial: {fileID: 2100000, guid: fee4db99c16594e45b182ced26df089a, type: 2}
   roofMaterial: {fileID: 2100000, guid: e9c93d95c84b6bd468aae6c0ee56f955, type: 2}
 --- !u!1 &7910630041011837739
 GameObject:
@@ -318,7 +318,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 62989618b371c7e4894ee2705aa3186a, type: 2}
+  - {fileID: 2100000, guid: 8082b570c44a87942a98cef602a53a47, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

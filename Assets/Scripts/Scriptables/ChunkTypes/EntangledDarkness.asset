@@ -23,7 +23,7 @@ MonoBehaviour:
   - {fileID: 4837790218605412414, guid: b62bffff1b255984daf5875cfd5b3d70, type: 3}
   - {fileID: 4837790218605412414, guid: ed0084107958c4048814fb083ddbbca5, type: 3}
   - {fileID: 4837790218605412414, guid: 68317519db6232c4a9959106e9ee5384, type: 3}
-  emptyRoomPrefab: {fileID: 4837790218605412414, guid: d8e512b2c5cf6ce4483e8387aaef4cd9,
+  emptyRoomPrefab: {fileID: 4837790218605412414, guid: 440428dca38c1d444aa8f45a75d49b07,
     type: 3}
   lightPrefab: {fileID: 4837790218605412414, guid: a0db87ae2e6aaf84b809dbc6a5da9d52,
     type: 3}

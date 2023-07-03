@@ -98,7 +98,7 @@ public class GenerationManager : MonoBehaviour
     {
         player.SetActive(false);
 
-        GameObject cleanRoom = WorldWideScripts.GetFirstCleanRoomInChunkByPos(new Vector2(2, 2));
+        GameObject cleanRoom = WorldWideScripts.GetFirstCleanRoomInChunkByPos(new IntVector2(2, 2));
         player.transform.position = new Vector3(cleanRoom.transform.position.x, 3f, cleanRoom.transform.position.z);
 
         player.SetActive(true);
@@ -159,10 +159,10 @@ public class GenerationManager : MonoBehaviour
         pi.currentChunkType = WorldWideScripts.GetChunkByCoordinate(currentChunk).GetChunkType();
         pi.ChunkUpdateAction();
 
-        if (navMeshBuildConcluded)
-        {
-            Rebake("Update");
-        }
+        //if (navMeshBuildConcluded)
+        //{
+        //    Rebake("Update");
+        //}
 
         // If this iteration contains more Chunks than ChunkLimit, then remove 10% of the Chunks that are the farthest from the player
         int originalChunkCount = currentChunkCount;

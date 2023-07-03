@@ -15,15 +15,15 @@ MonoBehaviour:
   chunkType: 3
   ranges: {x: 0.7, y: 1, z: 0, w: 0.1}
   roomPrefabs:
-  - {fileID: 4837790218605412414, guid: 6bb78d47781e18f449667b6222a07c14, type: 3}
-  - {fileID: 4837790218605412414, guid: 3324ca36dce857c49b41288f5ba230b6, type: 3}
-  - {fileID: 4837790218605412414, guid: c96c3b8c8f39388488d837b492d0a2f0, type: 3}
-  - {fileID: 4837790218605412414, guid: 1879df51396135f4c962c52dc4bd27d9, type: 3}
-  - {fileID: 4837790218605412414, guid: cc6bfd8f8496c2643805664eb2fcb2f3, type: 3}
-  - {fileID: 4837790218605412414, guid: 645b8cf7f697f73449204a57b482becc, type: 3}
-  - {fileID: 4837790218605412414, guid: 59b8acac50617f842a5cf22075e81cb7, type: 3}
-  - {fileID: 4837790218605412414, guid: e4441ac750c67434aae01402ee7255e6, type: 3}
-  emptyRoomPrefab: {fileID: 4837790218605412414, guid: d8e512b2c5cf6ce4483e8387aaef4cd9,
+  - {fileID: 4837790218605412414, guid: 79489dcce881fdb4db86359e8c33095f, type: 3}
+  - {fileID: 4837790218605412414, guid: cf2f2e49e96db964b85eea7582ecb575, type: 3}
+  - {fileID: 4837790218605412414, guid: 5f9b7a2e0968b534ca7b91da22ef2952, type: 3}
+  - {fileID: 4837790218605412414, guid: 1079cadb0e6ce3541864722b816aaba7, type: 3}
+  - {fileID: 4837790218605412414, guid: 46ecfb32b8f0f2045877bee82e684e31, type: 3}
+  - {fileID: 4837790218605412414, guid: 61c87c1a9a592eb49bfbea70ddeb4259, type: 3}
+  - {fileID: 4837790218605412414, guid: 97e331ff524ab1d4c8ccdd3b9153afdd, type: 3}
+  - {fileID: 4837790218605412414, guid: 20e6713bbbbe04740b80148946248dbc, type: 3}
+  emptyRoomPrefab: {fileID: 4837790218605412414, guid: 93523112145fe3942863d0cf922f5b52,
     type: 3}
   lightPrefab: {fileID: 4837790218605412414, guid: df32b8d58dec5b549bec7ec1109ca3df,
     type: 3}
