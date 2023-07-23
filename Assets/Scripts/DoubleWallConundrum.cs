@@ -17,7 +17,6 @@ public class DoubleWallConundrum : MonoBehaviour
         {
             if (hitCollider.gameObject.CompareTag("Door"))
             {
-                Debug.Log("Destroying walls");
                 Destroy(gameObject);
             }
         }

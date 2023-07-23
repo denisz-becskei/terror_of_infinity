@@ -18,7 +18,6 @@ public class RiftPortal : MonoBehaviour
         if(other.gameObject.CompareTag("Player") && !wasTriggered)
         {
             wasTriggered = true;
-            Debug.Log("Entered Trigger!");
             Teleport();
         } else if (wasTriggered)
         {

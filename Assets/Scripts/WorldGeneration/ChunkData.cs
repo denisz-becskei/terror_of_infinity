@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using static GenerationManager;
-using static IntVector2Init;
+using static TypeInit;
 
 public class ChunkData : MonoBehaviour
 {

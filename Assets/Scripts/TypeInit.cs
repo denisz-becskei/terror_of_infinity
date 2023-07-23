@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class IntVector2Init : MonoBehaviour
+public class TypeInit : MonoBehaviour
 {
     public struct IntVector2
     {
@@ -51,6 +51,21 @@ public class IntVector2Init : MonoBehaviour
         public override string ToString()
         {
             return x.ToString() + ":" + y.ToString();
+        }
+    }
+
+    [Serializable]
+    public struct DialogLine
+    {
+        public string sender;
+        public string message;
+        public AudioClip audioClip;
+
+        public DialogLine(string sender, string message, AudioClip audioClip)
+        {
+            this.sender = sender;
+            this.message = message;
+            this.audioClip = audioClip;
         }
     }
 }

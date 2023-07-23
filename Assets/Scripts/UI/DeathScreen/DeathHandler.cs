@@ -14,6 +14,7 @@ public class DeathHandler : MonoBehaviour, IDataPersistance
     [SerializeField] FirstPersonMovement fpm;
     [SerializeField] FirstPersonLook fpl;
     [SerializeField] GeneratePrompt gp;
+    [SerializeField] PlayerInformation pi;
     
     [SerializeField] GameObject worldGrid;
     [SerializeField] GenerationManager gm;
@@ -106,9 +107,9 @@ public class DeathHandler : MonoBehaviour, IDataPersistance
         ss.SetSkullsToGenerate(dpm.GetGameState().NUMBER_OF_LIVES - 1);
 
         isDeathSequenceRunning = false;
-        // TODO: Respawn Player Elsewhere
         dpm.ReformatGame();
         gm.GenerateWorld();
+        pi.ChunkUpdateAction();
     }
 
     public void LoadData(GameStates data)

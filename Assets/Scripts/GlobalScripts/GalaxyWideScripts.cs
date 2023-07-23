@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static IntVector2Init;
+using static TypeInit;
 
 public static class GalaxyWideScripts
 {

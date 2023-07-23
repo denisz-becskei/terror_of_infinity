@@ -14,7 +14,6 @@ public class AngelTrigger : MonoBehaviour
             {
                 FallenAngel fa = hit.transform.gameObject.GetComponent<FallenAngel>();
                 fa.isActive = true;
-                Debug.Log("Angel has been triggered!");
             }
         }
     }

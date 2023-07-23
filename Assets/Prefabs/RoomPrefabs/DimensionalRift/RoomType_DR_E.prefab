@@ -49,6 +49,7 @@ MonoBehaviour:
   baseRoomGenOverride: 0
   groundMaterial: {fileID: 2100000, guid: 2f0b76b7855642c4793c7d7a6214237e, type: 2}
   roofMaterial: {fileID: 2100000, guid: 5e2f785379edbd1408f7b40663800f5b, type: 2}
+  surfaceSound: {fileID: 0}
 --- !u!1001 &4881262356985908324
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -130,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 4280827389425967473, guid: 1d59b0e9991e8cf41a5c2aafe2ccb81c,
         type: 3}
       propertyPath: spawnChance
-      value: 30
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4280827389425967473, guid: 1d59b0e9991e8cf41a5c2aafe2ccb81c,
         type: 3}

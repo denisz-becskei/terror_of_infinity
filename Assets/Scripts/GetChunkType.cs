@@ -37,7 +37,6 @@ public class GetChunkType : MonoBehaviour
 
         float objectiveValueAtPosition = WorldWideScripts.GetPerlinNoiseValue(xObjective, yObjective);
         float difficultyValueAtPosition = WorldWideScripts.GetPerlinNoiseValue(xDifficulty, yDifficulty);
-        Debug.Log("Values: " + objectiveValueAtPosition.ToString() + " ; " + difficultyValueAtPosition.ToString());
         return SelectChunkType(objectiveValueAtPosition, difficultyValueAtPosition); ;
         
     }

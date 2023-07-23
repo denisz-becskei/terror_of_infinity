@@ -114,7 +114,6 @@ public class Sinewave : MonoBehaviour
         float currentDeltaTime = Time.timeSinceLevelLoad;
         timer += currentDeltaTime - lastDeltaTime;
         lastDeltaTime = currentDeltaTime;
-        Debug.Log(timer);
     }
 
     Color RandomColorSelector()

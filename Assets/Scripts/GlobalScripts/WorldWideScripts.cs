@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using static GenerationManager;
-using static IntVector2Init;
+using static TypeInit;
 
 public class WorldWideScripts : MonoBehaviour
 {
@@ -94,9 +94,9 @@ public class WorldWideScripts : MonoBehaviour
         return Mathf.Sqrt(num1 * num1 + num2 * num2 + num3 * num3);
     }
 
-    public static bool Chance(int percentage)
+    public static bool Chance(float percentage)
     {
-        return Random.Range(0, 100) <= percentage;
+        return Random.Range(0f, 100f) <= percentage;
     }
 
     public static Chunk GetChunkByCoordinate(IntVector2 coordinates)

@@ -3,7 +3,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] GameObject[] prefabs;
-    [SerializeField] int spawnChance;
+    [SerializeField] float spawnChance;
     [SerializeField] int spawnProxy;
     
     [SerializeField] bool randomRotation;

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using static IntVector2Init;
+using static TypeInit;
 
 public class ChunkMap
 {

@@ -62,10 +62,8 @@ public class FallenAngel : MonoBehaviour
         if(GeometryUtility.TestPlanesAABB(cameraFrustrum, bounds))
         {
             isBeingLookedAt = true;
-            Debug.Log("Angel is being looked at.");
         } else
         {
-            Debug.Log("Angel is no longer being looked at.");
             isBeingLookedAt = false;
         }
     }
@@ -98,7 +96,7 @@ public class FallenAngel : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         NavMeshHit closestHit;
-        gm.Rebake("Update");
+        StartCoroutine(gm.Rebake());
 
         if (NavMesh.SamplePosition(gameObject.transform.position, out closestHit, 500f, NavMesh.AllAreas))
         {
@@ -107,10 +105,6 @@ public class FallenAngel : MonoBehaviour
             nma.baseOffset = 0;
             nma.speed = 16f;
             nma.acceleration = 16f;
-        }
-        else
-        {
-            Debug.LogError("Could not find position on NavMesh! Retrying.");
         }
     }
 

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
 using System.Linq;
-using static IntVector2Init;
+using static TypeInit;
 
 public class GenerationManager : MonoBehaviour
 {
@@ -84,7 +84,7 @@ public class GenerationManager : MonoBehaviour
 
         // TODO:
         // Trigger Enemy
-        Rebake("Build");
+        StartCoroutine(Rebake());
         //if(navMeshUpdateRoutine == null)
         //{
         //    navMeshUpdateRoutine = StartCoroutine(UpdateNavMesh());
@@ -159,10 +159,11 @@ public class GenerationManager : MonoBehaviour
         pi.currentChunkType = WorldWideScripts.GetChunkByCoordinate(currentChunk).GetChunkType();
         pi.ChunkUpdateAction();
 
-        //if (navMeshBuildConcluded)
-        //{
-        //    Rebake("Update");
-        //}
+        if (navMeshBuildConcluded)
+        {
+            Debug.Log("Starting Update Routine");
+            StartCoroutine(Rebake());
+        }
 
         // If this iteration contains more Chunks than ChunkLimit, then remove 10% of the Chunks that are the farthest from the player
         int originalChunkCount = currentChunkCount;
@@ -202,20 +203,14 @@ public class GenerationManager : MonoBehaviour
         //Debug.Log("Running ChunkChecker(TM)");
     }
 
-    public void Rebake(string action)
+    public IEnumerator<AsyncOperation> Rebake()
     {
-        switch (action)
+        if (!nms.navMeshData)
         {
-            case "Build":
-                nms.BuildNavMesh();
-                navMeshBuildConcluded = true;
-                break;
-            case "Update":
-                nms.UpdateNavMesh(nms.navMeshData);
-                break;
-            default:
-                Debug.LogError("HOLD UP! WE ARE NOT SUPPOSED TO BE HERE");
-                break;
+            nms.BuildNavMesh();
+            navMeshBuildConcluded = true;
         }
+        
+        yield return nms.UpdateNavMesh(nms.navMeshData);
     }
 }
