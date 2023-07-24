@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogLines:
   - sender: '???:'
-    message: Hello? Mic check, 123.
+    message: Hello? Mic check, one-two-three.
     audioClip: {fileID: 8300000, guid: ff573ed8f66f1d3478e9622b5bc2b39b, type: 3}
   - sender: '???:'
     message: Who are you? Where am I? How did I get here?!
@@ -23,30 +23,30 @@ MonoBehaviour:
     message: Oh, hi! I am Beta. And you are?
     audioClip: {fileID: 8300000, guid: b8f7884ebcc0c7f46ada94163da1ec02, type: 3}
   - sender: '???:'
-    message: I'm Naomi.
-    audioClip: {fileID: 8300000, guid: 6f4db9a688ab9764a9c92de0a7b65908, type: 3}
-  - sender: 'Naomi:'
+    message: I'm CHARACTER.MAIN.NAME.
+    audioClip: {fileID: 0}
+  - sender: 'CHARACTER.MAIN.NAME:'
     message: Where am I? Answer me!
     audioClip: {fileID: 8300000, guid: 8da3ccd9665fcb848ab49be9d600943d, type: 3}
   - sender: 'Beta:'
     message: Does it matter?
     audioClip: {fileID: 8300000, guid: 5eb5f4c9e11127a4b88bac351a6439ef, type: 3}
-  - sender: 'Naomi:'
+  - sender: 'CHARACTER.MAIN.NAME:'
     message: Well, it does. You wouldn't like waking up without any memory of how
       you got some place you never seen before either.
     audioClip: {fileID: 8300000, guid: 6d886db9b545982449de4b672e777b17, type: 3}
   - sender: 'Beta:'
-    message: Naomi... what a nice name.
+    message: CHARACTER.MAIN.NAME... what a nice name.
     audioClip: {fileID: 8300000, guid: f555a7cdac3ac5a48b67e0cfc6745201, type: 3}
   - sender: 'Beta:'
-    message: Naomi dear, you are in the Infinite.
+    message: CHARACTER.MAIN.NAME dear, you are in the Infinite.
     audioClip: {fileID: 8300000, guid: 6ab16e113fe1d76479974f3e36189ce8, type: 3}
-  - sender: 'Naomi:'
+  - sender: 'CHARACTER.MAIN.NAME:'
     message: The what?
     audioClip: {fileID: 8300000, guid: bbe66b7aad325264395676aaa430b0ce, type: 3}
   - sender: 'Beta:'
     message: No time to explain! You're in danger! RUN!
     audioClip: {fileID: 8300000, guid: c6e2b184d54afa24e84264ac81f86c96, type: 3}
-  - sender: 'Naomi:'
+  - sender: 'CHARACTER.MAIN.NAME:'
     message: WAIT---
     audioClip: {fileID: 8300000, guid: 0a7e1be5807594941bd425af13ef59bb, type: 3}

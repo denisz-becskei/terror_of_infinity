@@ -1085,7 +1085,7 @@ MonoBehaviour:
   nms: {fileID: 954883883}
   enemyController: {fileID: 1602996568}
   blockSize: 64
-  chunkOverride: 8
+  chunkOverride: 3
   chunksGenerated: 0
   currentState: 0
 --- !u!4 &599674792
@@ -1229,6 +1229,7 @@ MonoBehaviour:
   ccp: {fileID: 637959512}
   sinewave: {fileID: 1073000555}
   sinewaveTexture: {fileID: 209853729}
+  dialog: {fileID: 1978622424}
 --- !u!114 &637959512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4143,11 +4144,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1158a19603e9c3341a1618e124c3f3b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scriptTitles:
+  - Intro
+  - LabyrinthOfBlindness
+  - MadnessInRed
   scripts:
   - {fileID: 11400000, guid: a9c06b2a8f4d73e4a897bf78a8362293, type: 2}
+  - {fileID: 11400000, guid: 8c4880817eecb0643ad2df3e2b32c509, type: 2}
+  - {fileID: 11400000, guid: 5bca6e709335d0e4caf460dae94d0089, type: 2}
   speakerText: {fileID: 1174884025}
   speechText: {fileID: 1508668576}
   audioSource: {fileID: 894181483}
+  introReplace:
+  - {fileID: 11400000, guid: 922ce16abbfad9a41b1ae205bd1e5a72, type: 2}
+  - {fileID: 11400000, guid: 0bedc9fa3560959488b830b7fadd1d42, type: 2}
+  - {fileID: 11400000, guid: 9f3809924bc3f7a4d8244a2537636ca6, type: 2}
 --- !u!1 &2035257434
 GameObject:
   m_ObjectHideFlags: 0

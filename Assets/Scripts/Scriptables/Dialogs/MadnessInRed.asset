@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd6416662abcb8479821c4d007b96c5, type: 3}
+  m_Name: MadnessInRed
+  m_EditorClassIdentifier: 
+  dialogLines:
+  - sender: 'CHARACTER.MAIN.NAME:'
+    message: Why is it so red here? It is giving out a very creepy atmosphere...
+    audioClip: {fileID: 8300000, guid: 2f27615546c06c44ca1f2160292db3f6, type: 3}
+  - sender: 'CHARACTER.MAIN.NAME:'
+    message: The smoke isn't helping either.
+    audioClip: {fileID: 8300000, guid: 2a8a376c52fc00342991717861cb29e3, type: 3}
+  - sender: 'Beta:'
+    message: Red is a fascinating color. It reminds me of blood.
+    audioClip: {fileID: 8300000, guid: ff97cbc68a784d84084607d864ed5391, type: 3}
+  - sender: 'CHARACTER.MAIN.NAME:'
+    message: This seems toxic. Maybe I shouldn't breathe this for too long.
+    audioClip: {fileID: 8300000, guid: 81e74e3e2ed83c7459eaddcf992b74d9, type: 3}

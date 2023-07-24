@@ -34,6 +34,27 @@ public class WorldWideScripts : MonoBehaviour
         { '-', KeyCode.None }
     };
 
+    public static Dictionary<int, string> chunkTypesByInt = new Dictionary<int, string>()
+    {
+        {1, "Entrance" },
+        {2, "EntangledDarkness" },
+        {3, "MadnessInRed" },
+        {4, "TheWarehouse" },
+        {5, "HazeOfDeath" },
+        {6, "ColdForest" },
+        {7, "PossessedTeddies" },
+        {8, "LabyrinthOfBlindness" },
+        {9, "TheSimulation" },
+        {10, "InfinityMaze" },
+        {11, "ShiftingWorld" },
+        {12, "InfiniteNightSky" },
+        {13, "TheRottingCrypts" },
+        {14, "GateToReality" },
+        {15, "ChromaticConondrum" },
+        {16, "BrightOfAngels" },
+        {17, "DimensionalRift" }
+    };
+
     public static GameObject GetFurthestRoomFromGameObject(Transform compare)
     {
         GameObject furthest = null;

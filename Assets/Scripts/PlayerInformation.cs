@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static GenerationManager;
 
@@ -15,10 +17,15 @@ public class PlayerInformation : MonoBehaviour, IDataPersistance
     [SerializeField] private GameObject sinewave;
     [SerializeField] private GameObject sinewaveTexture;
 
+    [SerializeField] private DialogUIHandler dialog;
+
     private Coroutine updatePositionRoutine;
+    private Dictionary<ChunkType, bool> wereVisited = new Dictionary<ChunkType, bool>();
+    private bool isDialogSystemRunning = false;
 
     private void Start()
     {
+        StartCoroutine(LateStart());
         updatePositionRoutine = StartCoroutine(UpdatePlayerPosition());
     }
 
@@ -73,6 +80,11 @@ public class PlayerInformation : MonoBehaviour, IDataPersistance
         } else { 
             updatePositionRoutine = StartCoroutine(UpdatePlayerPosition());
         }
+
+        if(isDialogSystemRunning)
+        {
+            DialogUpdateAction();
+        }
     }
 
     private IEnumerator UpdatePlayerPosition()
@@ -110,5 +122,36 @@ public class PlayerInformation : MonoBehaviour, IDataPersistance
     {
         data.PLAYER_WORLD_COORDINATES = playerCurrentWorldPosition;
         Debug.Log("Saving World Position");
+    }
+
+    private void DialogUpdateAction()
+    {
+        if(wereVisited.Count == 0)
+        {
+            PopulateVisitedDictionary();
+        }
+
+        if (wereVisited[currentChunkType] == false)
+        {
+            bool success = dialog.Play(WorldWideScripts.chunkTypesByInt[((int)currentChunkType)], false);
+            if (success)
+            {
+                wereVisited[currentChunkType] = true;
+            }
+        }
+    }
+
+    private void PopulateVisitedDictionary()
+    {
+        for(int i = 1; i < 18; i++)
+        {
+            wereVisited.Add((ChunkType)i, false);
+        }
+    }
+
+    IEnumerator LateStart()
+    {
+        yield return new WaitForSeconds(5f);
+        isDialogSystemRunning = true;
     }
 }

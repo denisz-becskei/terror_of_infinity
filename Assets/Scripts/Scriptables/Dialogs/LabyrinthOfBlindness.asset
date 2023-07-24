@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd6416662abcb8479821c4d007b96c5, type: 3}
+  m_Name: LabyrinthOfBlindness
+  m_EditorClassIdentifier: 
+  dialogLines:
+  - sender: 'Beta:'
+    message: You just entered the Labyrinth of Blindness.
+    audioClip: {fileID: 8300000, guid: 8ce1fde5991a18c49acd4146a2dd6010, type: 3}
+  - sender: 'Beta:'
+    message: Your flashlight is worthless here, but on the other end, you can see
+      everything that is close to you.
+    audioClip: {fileID: 8300000, guid: d3a21b94fdaf6514fa055dc13c5ac6e8, type: 3}
+  - sender: 'Beta:'
+    message: Make sure you don't bump into anything.
+    audioClip: {fileID: 8300000, guid: ee763458b3ca46a428d9aca9c4d9f12c, type: 3}
+  - sender: 'CHARACTER.MAIN.NAME:'
+    message: Easier said than done...
+    audioClip: {fileID: 8300000, guid: 7d47fd16ec2963646b5f28199acd5cb3, type: 3}
