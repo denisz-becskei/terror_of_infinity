@@ -28,6 +28,7 @@ public class DeathHandler : MonoBehaviour, IDataPersistance
     [SerializeField] Animator causeAnimator;
 
     [SerializeField] DataPersistanceManager dpm;
+    [SerializeField] DialogUIHandler duih;
 
     private GameObject uiContainer;
     private GameObject player;
@@ -54,6 +55,8 @@ public class DeathHandler : MonoBehaviour, IDataPersistance
         {
             return;
         }
+
+        duih.InterruptAll();
 
         isDeathSequenceRunning = true;
         dpm.SaveGame();
@@ -110,6 +113,8 @@ public class DeathHandler : MonoBehaviour, IDataPersistance
         dpm.ReformatGame();
         gm.GenerateWorld();
         pi.ChunkUpdateAction();
+
+        StartCoroutine(duih.PlayDelayed("Respawn", true, 2f));
     }
 
     public void LoadData(GameStates data)

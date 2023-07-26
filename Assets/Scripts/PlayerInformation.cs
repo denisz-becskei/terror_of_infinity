@@ -131,7 +131,10 @@ public class PlayerInformation : MonoBehaviour, IDataPersistance
             PopulateVisitedDictionary();
         }
 
-        if (wereVisited[currentChunkType] == false)
+        if(currentChunkType == ChunkType.Purgatory)
+        {
+            return;
+        } else if (wereVisited[currentChunkType] == false)
         {
             bool success = dialog.Play(WorldWideScripts.chunkTypesByInt[((int)currentChunkType)], false);
             if (success)

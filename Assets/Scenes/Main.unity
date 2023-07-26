@@ -1085,7 +1085,7 @@ MonoBehaviour:
   nms: {fileID: 954883883}
   enemyController: {fileID: 1602996568}
   blockSize: 64
-  chunkOverride: 3
+  chunkOverride: 8
   chunksGenerated: 0
   currentState: 0
 --- !u!4 &599674792
@@ -3115,6 +3115,7 @@ MonoBehaviour:
   cbAnimator: {fileID: 713172646}
   causeAnimator: {fileID: 702816160}
   dpm: {fileID: 2066458307}
+  duih: {fileID: 1978622424}
 --- !u!224 &1414337397 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 135107038768172602, guid: 941a460031a826f439b3858aefbf9d08,
@@ -4148,10 +4149,12 @@ MonoBehaviour:
   - Intro
   - LabyrinthOfBlindness
   - MadnessInRed
+  - Respawn
   scripts:
   - {fileID: 11400000, guid: a9c06b2a8f4d73e4a897bf78a8362293, type: 2}
   - {fileID: 11400000, guid: 8c4880817eecb0643ad2df3e2b32c509, type: 2}
   - {fileID: 11400000, guid: 5bca6e709335d0e4caf460dae94d0089, type: 2}
+  - {fileID: 11400000, guid: 02fd7e05ca169eb4b90dcfbdfc1cebc9, type: 2}
   speakerText: {fileID: 1174884025}
   speechText: {fileID: 1508668576}
   audioSource: {fileID: 894181483}

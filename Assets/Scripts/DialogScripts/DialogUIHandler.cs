@@ -16,7 +16,10 @@ public class DialogUIHandler : MonoBehaviour
     [SerializeField] private DialogScriptableObject[] introReplace;
 
     private Coroutine dialogRoutine;
+    private Coroutine typeRoutine;
     private bool isDialogRunning = false;
+
+    private bool isInterrupted = false;
 
     private void Start()
     {
@@ -96,17 +99,41 @@ public class DialogUIHandler : MonoBehaviour
 
         for(uint i = 0; i < dialog.dialogLines.Count; i++)
         {
+            if (isInterrupted)
+            {
+                isInterrupted = false;
+                break;
+            }
+
             SetSpeech("");
             audioSource.clip = dialog.dialogLines[(int)i].audioClip;
             float audioClipLength = audioSource.clip.length;
             SetSpeaker(dialog.dialogLines[(int)i].sender);
-            StartCoroutine(SetSpeech(dialog.dialogLines[(int)i].message, audioClipLength));
+            typeRoutine = StartCoroutine(SetSpeech(dialog.dialogLines[(int)i].message, audioClipLength));
             audioSource.Play();
             yield return new WaitForSeconds(audioClipLength + 1.5f);
         }
         SetSpeaker("");
         SetSpeech("");
         isDialogRunning = false;
+    }
+
+    public void InterruptAll()
+    {
+        if(typeRoutine != null)
+        {
+            StopCoroutine(typeRoutine);
+        }
+        if(dialogRoutine != null)
+        {
+            SetSpeaker("");
+            SetSpeech("");
+            isDialogRunning = false;
+            audioSource.Stop();
+            isInterrupted = true;
+
+            StopCoroutine(dialogRoutine);
+        }
     }
 
     private void SetSpeaker(string speaker)
@@ -151,6 +178,12 @@ public class DialogUIHandler : MonoBehaviour
         modified = ModifyDialog(null, modified.Item2, introReplace[1], 7, index, false);
         modified = ModifyDialog(null, modified.Item2, introReplace[2], 8, index, false);
         Play(modified.Item2, true);
+    }
+
+    public IEnumerator PlayDelayed(string scriptName, bool canInterrupt, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Play(scriptName, canInterrupt);
     }
 
     private DialogScriptableObject GetDialogByName(string name)

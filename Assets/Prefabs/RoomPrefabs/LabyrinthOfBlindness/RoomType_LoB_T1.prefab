@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2.13
+  outlineWidth: 2.12
   precomputeOutline: 1
   bakeKeys:
   - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
@@ -493,5 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centerAvailable: 1
+  baseRoomGenOverride: 0
   groundMaterial: {fileID: 2100000, guid: 168271611de43194880082179c4fcbcd, type: 2}
   roofMaterial: {fileID: 2100000, guid: 2f0b76b7855642c4793c7d7a6214237e, type: 2}
+  surfaceSound: {fileID: 0}
