@@ -24,7 +24,7 @@ public class StatusEffectController : MonoBehaviour
         return null;
     }
 
-    public void AddStatusEffect(string statusEffectId, bool isActive)
+    public void AddStatusEffect(string statusEffectId, bool isActive, float statusEffectModifier = 0)
     {
         StatusEffectScriptableObject selectedStatusEffect = GetObjectOfStatusEffect(statusEffectScriptableObjects, statusEffectId);
         if (selectedStatusEffect == null || GetObjectOfStatusEffect(activeStatusEffects, statusEffectId) != null) return;
@@ -39,6 +39,9 @@ public class StatusEffectController : MonoBehaviour
                 case "Toxicated":
                     behaviours.AddToxication();
                     break;
+                case "PowerSurge":
+                    behaviours.ModifyFlashlightPower((float)statusEffectModifier);
+                    break;
                 default:
                     Debug.LogError("Not supposed to be here.");
                     break;
@@ -46,7 +49,7 @@ public class StatusEffectController : MonoBehaviour
         }
     }
 
-    public void RemoveStatusEffect(string statusEffectId, bool isActive)
+    public void RemoveStatusEffect(string statusEffectId, bool isActive, float statusEffectModifier = 0)
     {
         StatusEffectScriptableObject selectedStatusEffect = GetObjectOfStatusEffect(statusEffectScriptableObjects, statusEffectId);
 
@@ -60,6 +63,9 @@ public class StatusEffectController : MonoBehaviour
             {
                 case "Toxicated":
                     behaviours.RemoveToxication();
+                    break;
+                case "PowerSurge":
+                    behaviours.ModifyFlashlightPower(statusEffectModifier);
                     break;
                 default:
                     Debug.LogError("Not supposed to be here.");

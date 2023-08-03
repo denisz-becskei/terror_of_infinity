@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HARROW
   m_EditorClassIdentifier: 
   agentType: HARROW
-  agentPrefab: {fileID: 0}
+  agentSprite: {fileID: 21300000, guid: 3a209ee4011fca341bf9886c8448123c, type: 3}
   agentSpeed: 4
   boostedAgentSpeedPercentage: 1.5
   huntChance:

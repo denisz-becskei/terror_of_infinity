@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HOLLOW FLAME
   m_EditorClassIdentifier: 
   agentType: HOLLOW FLAME
-  agentPrefab: {fileID: 0}
+  agentSprite: {fileID: 21300000, guid: 84d4aa63cd5de3241b1e0ce1f0d5d32c, type: 3}
   agentSpeed: 4
   boostedAgentSpeedPercentage: 2
   huntChance:

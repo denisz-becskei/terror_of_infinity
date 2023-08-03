@@ -7,7 +7,7 @@ public class StatusEffectBehaviours : MonoBehaviour
     [SerializeField] private AudioSource behavioralAudio;
     [SerializeField] AudioClip[] coughingClips;
 
-    // Toxication
+    [Header("Toxication")]
     private Coroutine suffocationRoutine;
     private bool isToxicationActive = false;
 
@@ -37,5 +37,14 @@ public class StatusEffectBehaviours : MonoBehaviour
         }
         yield return new WaitForSeconds(2.5f);
         dh.StartDeathSequence("SUFFOCATED.");
+    }
+
+    // Flashlight Power
+    [Header("Flashlight Power")]
+    [SerializeField] private Light flashlight;
+    public void ModifyFlashlightPower(float power)
+    {
+        flashlight.innerSpotAngle = power;
+        flashlight.spotAngle = power + 20f;
     }
 }

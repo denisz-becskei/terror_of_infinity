@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BANSHEE
   m_EditorClassIdentifier: 
   agentType: BANSHEE
-  agentPrefab: {fileID: 0}
+  agentSprite: {fileID: 21300000, guid: 90f8f3304a3028e47b0ca6a1d3736f19, type: 3}
   agentSpeed: 4
   boostedAgentSpeedPercentage: 1.65
   huntChance:

@@ -27,6 +27,7 @@ public class OnChangeChunkType : MonoBehaviour
     public void StartAction(ChunkType chunkTypeLeft, ChunkType chunkTypeEntered)
     {
         LeftChunkAction(chunkTypeLeft);
+        DefaultChunkAction(chunkTypeEntered);
         EnteredChunkAction(chunkTypeEntered);
     }
 
@@ -56,6 +57,9 @@ public class OnChangeChunkType : MonoBehaviour
                 sinewave.isActive = true;
                 sinewaveTexture.SetActive(true);
                 ccp.isEnabled = true;
+                break;
+            case ChunkType.PossessedTeddies:
+                statusEffectController.AddStatusEffect("PowerSurge", true, 88.4f);
                 break;
         }
     }
@@ -89,6 +93,15 @@ public class OnChangeChunkType : MonoBehaviour
 
                 ccp.isEnabled = false;
                 break;
+            case ChunkType.PossessedTeddies:
+                statusEffectController.RemoveStatusEffect("PowerSurge", true, 46.7f);
+                break;
         }
+    }
+
+    private void DefaultChunkAction(ChunkType chunkType)
+    {
+        AgentScriptableObject currentActiveAgent = WorldWideScripts.GetAgentByChunkType(chunkType, EnemyIndicator.agentTypes);
+        EnemyIndicator.UpdateEnemy(currentActiveAgent);
     }
 }

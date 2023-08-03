@@ -4,7 +4,7 @@ using UnityEngine;
 public class AgentScriptableObject : ScriptableObject
 {
     public string agentType;
-    public GameObject agentPrefab;
+    public Sprite agentSprite;
 
     public float agentSpeed;
     public float boostedAgentSpeedPercentage;

@@ -198,4 +198,38 @@ public class WorldWideScripts : MonoBehaviour
             new IntVector2(int.Parse(roomPositionString[0]), int.Parse(roomPositionString[1])),
         };
     }
+
+    public static AgentScriptableObject GetAgentByChunkType(ChunkType chunkType, AgentTypeContainerScriptableObject agentTypes)
+    {
+        switch (chunkType) {
+            case ChunkType.Entrance:
+            case ChunkType.EntangledDarkness:
+            case ChunkType.MadnessInRed:
+                return agentTypes.agentTypes[0];
+            case ChunkType.PossessedTeddies:
+                return agentTypes.agentTypes[1];
+            case ChunkType.ShiftingWorld:
+            case ChunkType.TheSimulation:
+            case ChunkType.GateToReality:
+                return agentTypes.agentTypes[2];
+            case ChunkType.TheRottingCrypts:
+            case ChunkType.TheWarehouse:
+                return agentTypes.agentTypes[3];
+            case ChunkType.HazeOfDeath:
+            case ChunkType.ColdForest:
+                return agentTypes.agentTypes[4];
+            case ChunkType.InfiniteNightSky:
+            case ChunkType.LabyrinthOfBlindness:
+                return agentTypes.agentTypes[5];
+            case ChunkType.ChromaticConondrum:
+            case ChunkType.BrightOfAngels:
+                return agentTypes.agentTypes[6];
+            // TODO: Add Hollow Flame
+            case ChunkType.DimensionalRift:
+            case ChunkType.InfinityMaze:
+                return agentTypes.agentTypes[8];
+            //TODO: Add Glitch
+        }
+        return null;
+    }
 }

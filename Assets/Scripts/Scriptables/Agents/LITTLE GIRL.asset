@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LITTLE GIRL
   m_EditorClassIdentifier: 
   agentType: LITTLE GIRL
-  agentPrefab: {fileID: 0}
+  agentSprite: {fileID: 21300000, guid: 16c4eaa872aaa804e944db65cc2f6ccf, type: 3}
   agentSpeed: 4
   boostedAgentSpeedPercentage: 1
   huntChance:

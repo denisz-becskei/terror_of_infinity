@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GLITCH
   m_EditorClassIdentifier: 
   agentType: GLITCH
-  agentPrefab: {fileID: 0}
+  agentSprite: {fileID: 21300000, guid: 9aae0933152f71c4eaf8740e30e6d9af, type: 3}
   agentSpeed: 7
   boostedAgentSpeedPercentage: 1.5
   huntChance:
