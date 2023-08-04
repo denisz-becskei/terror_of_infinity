@@ -68,15 +68,15 @@ public class GenerationManager : MonoBehaviour
 
     private void Start()
     {
+        gct = GetComponent<GetChunkType>();
+        pi = player.GetComponent<PlayerInformation>();
         GenerateWorld();
     }
 
     public void GenerateWorld()
     {
         chunks = new List<Chunk>();
-
         rooms = new List<GameObject>();
-        gct = GetComponent<GetChunkType>();
 
         GenerateStartChunks();
         SpawnPlayer();
@@ -99,10 +99,10 @@ public class GenerationManager : MonoBehaviour
         player.SetActive(false);
 
         GameObject cleanRoom = WorldWideScripts.GetFirstCleanRoomInChunkByPos(new IntVector2(2, 2));
-        player.transform.position = new Vector3(cleanRoom.transform.position.x, 3f, cleanRoom.transform.position.z);
-
+        Vector3 cleanRoomPos = cleanRoom.transform.position;
+        player.transform.position = new Vector3(cleanRoomPos.x, 3f, cleanRoomPos.z);
         player.SetActive(true);
-        pi = player.GetComponent<PlayerInformation>();
+        
         //Camera.main.gameObject.SetActive(false);
     }
 

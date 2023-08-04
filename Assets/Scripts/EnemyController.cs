@@ -36,17 +36,6 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        switch (enemyState)
-        {
-            case EnemyState.Hunt:
-                Hunt();
-                modeText.text = "EnemyState: HUNT";
-                break;
-        }
-    }
-
     private void FixedUpdate()
     {
         switch (enemyState)
@@ -56,6 +45,7 @@ public class EnemyController : MonoBehaviour
                 modeText.text = "EnemyState: HARASS";
                 break;
             case EnemyState.Hide:
+                if (setHide) break;
                 Hide();
                 modeText.text = "EnemyState: HIDE";
                 break;

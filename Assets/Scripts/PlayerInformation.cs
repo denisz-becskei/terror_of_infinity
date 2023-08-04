@@ -60,19 +60,17 @@ public class PlayerInformation : MonoBehaviour, IDataPersistance
 
     private void PositionUpdate()
     {
-        Vector3 dwn = transform.TransformDirection(Vector3.down);
-        Vector3 newRaycastPosition = new Vector3(transform.position.x, transform.position.y + 3f, transform.position.z);
-        if (Physics.Raycast(newRaycastPosition, dwn, out hit, 20f))
+        Vector3 newRaycastPosition = transform.position + Vector3.up * 3f;
+
+        if (Physics.Raycast(newRaycastPosition, Vector3.down, out hit, 20f) && hit.transform.CompareTag("Ground"))
         {
-            if (hit.transform.gameObject.CompareTag("Ground"))
+            RoomPosition rp = hit.transform.parent?.GetComponent<RoomPosition>();
+            if (rp != null)
             {
-                var rp = hit.transform.parent.GetComponent<RoomPosition>();
-                if (rp != null)
-                {
-                    playerCurrentWorldPosition = rp.GetRoomCoordinatesInWorld();
-                }
+                playerCurrentWorldPosition = rp.GetRoomCoordinatesInWorld();
             }
         }
+
         updatePositionRoutine = StartCoroutine(UpdatePlayerPosition());
     }
 

@@ -145,15 +145,15 @@ public class Chunk : MonoBehaviour
         chunkContainer.transform.position = new Vector3(chunkCoordinates.x * chunkSizeSqrt * roomSize, 0, chunkCoordinates.y * chunkSizeSqrt * roomSize);
         chunkContainer.transform.parent = worldGrid.transform;
 
-        chunkContainer.AddComponent<BoxCollider>();
-        chunkContainer.GetComponent<BoxCollider>().size = new Vector3(56, 10, 56);
-        chunkContainer.GetComponent<BoxCollider>().center = new Vector3(24, 5, 24);
-        chunkContainer.GetComponent<BoxCollider>().isTrigger = true;
+        BoxCollider newContainer = chunkContainer.AddComponent<BoxCollider>();
+        newContainer.size = new Vector3(56, 10, 56);
+        newContainer.center = new Vector3(24, 5, 24);
+        newContainer.isTrigger = true;
         chunkContainer.AddComponent<ChunkChecker>().gm = gm;
 
-        chunkContainer.AddComponent<ChunkData>();
-        chunkContainer.GetComponent<ChunkData>().chunkType = type;
-        chunkContainer.GetComponent<ChunkData>().ChunkPositionInWorld = new IntVector2(chunkCoordinates.x, chunkCoordinates.y);
+        ChunkData data = chunkContainer.AddComponent<ChunkData>();
+        data.chunkType = type;
+        data.ChunkPositionInWorld = new IntVector2(chunkCoordinates.x, chunkCoordinates.y);
     }
 
     public GameObject GetParent()

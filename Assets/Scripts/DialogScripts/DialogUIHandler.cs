@@ -124,16 +124,15 @@ public class DialogUIHandler : MonoBehaviour
         {
             StopCoroutine(typeRoutine);
         }
-        if(dialogRoutine != null)
-        {
-            SetSpeaker("");
-            SetSpeech("");
-            isDialogRunning = false;
-            audioSource.Stop();
-            isInterrupted = true;
 
-            StopCoroutine(dialogRoutine);
-        }
+        if (dialogRoutine == null) return;
+        SetSpeaker("");
+        SetSpeech("");
+        isDialogRunning = false;
+        audioSource.Stop();
+        isInterrupted = true;
+
+        StopCoroutine(dialogRoutine);
     }
 
     private void SetSpeaker(string speaker)
