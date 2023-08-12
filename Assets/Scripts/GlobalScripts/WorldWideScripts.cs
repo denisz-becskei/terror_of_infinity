@@ -232,4 +232,9 @@ public class WorldWideScripts : MonoBehaviour
         }
         return null;
     }
+
+    public static Vector3 ModifyV3(Vector3 input, float modx, float mody, float modz)
+    {
+        return new Vector3(input.x + modx, input.y + mody, input.z + modz);
+    }
 }

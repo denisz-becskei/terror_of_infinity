@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Video;
 
 public class DeathHandler : MonoBehaviour, IDataPersistance
@@ -7,10 +8,12 @@ public class DeathHandler : MonoBehaviour, IDataPersistance
     [SerializeField] Camera fpsCamera;
     [SerializeField] Camera eventCamera;
 
-    [SerializeField] VideoShrink vs;
+    [SerializeField] VideoShrink vs_death;
+    [SerializeField] VideoShrink vs_gameOver;
     [SerializeField] SpawnSkulls ss;
     [SerializeField] TypewriterUI twUI;
-    [SerializeField] DiedZoopController dzc;
+    [FormerlySerializedAs("dzc")] [SerializeField] DiedZoopController dzc_death;
+    [SerializeField] DiedZoopController dzc_gameOver;
     [SerializeField] FirstPersonMovement fpm;
     [SerializeField] FirstPersonLook fpl;
     [SerializeField] GeneratePrompt gp;
@@ -21,7 +24,8 @@ public class DeathHandler : MonoBehaviour, IDataPersistance
 
     [SerializeField] GameObject skullContainer;
 
-    [SerializeField] VideoPlayer vp;
+    [SerializeField] VideoPlayer vp_death;
+    [SerializeField] VideoPlayer vp_gameOver;
 
     [SerializeField] Animator diedZoopAnimator;
     [SerializeField] Animator cbAnimator;
@@ -29,15 +33,17 @@ public class DeathHandler : MonoBehaviour, IDataPersistance
 
     [SerializeField] DataPersistanceManager dpm;
     [SerializeField] DialogUIHandler duih;
+    [SerializeField] GameObject returnButton;
 
     private GameObject uiContainer;
     private GameObject player;
 
     private bool isDeathSequenceRunning = false;
+    private bool isGameOverSequenceRunning = false;
 
     private void Start()
     {
-        uiContainer = GameObject.FindGameObjectWithTag("UIContainer");
+        uiContainer = GameObject.FindGameObjectWithTag("UIContinueContainer");
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -59,6 +65,7 @@ public class DeathHandler : MonoBehaviour, IDataPersistance
         duih.InterruptAll();
 
         isDeathSequenceRunning = true;
+        dpm.GetGameState().NUMBER_OF_LIVES -= 1;
         dpm.SaveGame();
         NukeWorld();
 
@@ -74,11 +81,11 @@ public class DeathHandler : MonoBehaviour, IDataPersistance
         causeAnimator.GetComponent<TMP_Text>().text = deathCause;
 
         fpm.ToggleMovement();
-        vp.Play();
-        vs.StartVideoShrink();
+        vp_death.Play();
+        vs_death.StartVideoShrink();
         gp.Generate();
         twUI.StartTypewrite();
-        dzc.StartDelayedAnimation();
+        dzc_death.StartDelayedAnimation();
         ss.StartSkullSpawns();
     }
 
@@ -102,25 +109,44 @@ public class DeathHandler : MonoBehaviour, IDataPersistance
             Destroy(child.gameObject);
         }
 
-        vs.GetComponent<Animator>().Play("VideoCanvasIdle");
+        vs_death.GetComponent<Animator>().Play("VideoCanvasIdle");
         uiContainer.GetComponent<Animator>().Play("UIContainerIdle");
         diedZoopAnimator.Play("GeneralAnimationZoopIdle");
         causeAnimator.Play("GeneralAnimationZoopIdle");
         cbAnimator.Play("ButtonFadeIdle");
-        ss.SetSkullsToGenerate(dpm.GetGameState().NUMBER_OF_LIVES - 1);
+        ss.SetSkullsToGenerate(dpm.GetGameState().NUMBER_OF_LIVES);
 
         isDeathSequenceRunning = false;
         dpm.ReformatGame();
         gm.GenerateWorld();
         pi.ChunkUpdateAction();
 
-        StartCoroutine(duih.PlayDelayed("Respawn", true, 2f));
+        StartCoroutine(duih.PlayDelayed("Respawn", true, 1.15f));
+    }
+
+    public void StartGameOverSequence()
+    {
+        if (isGameOverSequenceRunning)
+        {
+            return;
+        } 
+        
+        duih.InterruptAll();
+        isGameOverSequenceRunning = true;
+        
+        dpm.DeleteGame();
+        eventCamera.gameObject.transform.position = WorldWideScripts.ModifyV3(eventCamera.gameObject.transform.position, 186.8f, 0, -20f);
+        
+        vp_gameOver.Play();
+        vs_gameOver.StartVideoShrink();
+        
+        dzc_gameOver.StartDelayedAnimation(true);
+        returnButton.GetComponent<ContinueButtonController>().Animate();
     }
 
     public void LoadData(GameStates data)
     {
         ss.SetSkullsToGenerate(data.NUMBER_OF_LIVES);
-        Debug.Log("Loaded Number of Lives");
     }
 
     public void SaveData(ref GameStates data)

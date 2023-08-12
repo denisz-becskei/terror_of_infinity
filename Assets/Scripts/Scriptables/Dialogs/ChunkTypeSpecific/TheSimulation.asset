@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd6416662abcb8479821c4d007b96c5, type: 3}
+  m_Name: TheSimulation
+  m_EditorClassIdentifier: 
+  dialogLines:
+  - sender: 'CHARACTER.MAIN.NAME:'
+    message: 'Error: lang.iter.dialog.2.0.12532: uncatched ChunkTypeException at
+      line 32 in file OnChangeChunkType---'
+    audioClip: {fileID: 8300000, guid: bfdd83e398f147f4eb812622098120d6, type: 3}
+  - sender: 'Beta:'
+    message: Oi! Are you okay there?
+    audioClip: {fileID: 8300000, guid: 566a15816e84750418c2444999bfa660, type: 3}
+  - sender: 'CHARACTER.MAIN.NAME:'
+    message: Sure! Why wouldn't I be?
+    audioClip: {fileID: 8300000, guid: 53236c3c36912914fa11c412f8e28d4d, type: 3}
+  - sender: 'Beta:'
+    message: Hmm, okay.
+    audioClip: {fileID: 8300000, guid: a2f7e04b23dd7cd46a0bc3d7d588c2f4, type: 3}
+  - sender: 'Beta:'
+    message: '*distant* Monitor her every move, something is effecting her here.'
+    audioClip: {fileID: 8300000, guid: c6d4812d431797c488ce2d837c17ece7, type: 3}

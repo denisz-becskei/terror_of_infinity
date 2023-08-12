@@ -361,3 +361,4 @@ MonoBehaviour:
   baseRoomGenOverride: 0
   groundMaterial: {fileID: 2100000, guid: fee4db99c16594e45b182ced26df089a, type: 2}
   roofMaterial: {fileID: 2100000, guid: e9c93d95c84b6bd468aae6c0ee56f955, type: 2}
+  surfaceSound: {fileID: 0}

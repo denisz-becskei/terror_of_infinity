@@ -10,15 +10,17 @@ public class DiedZoopController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void StartDelayedAnimation()
+    public void StartDelayedAnimation(bool isGameOver = false)
     {
-        StartCoroutine(DelayedAnimationStart());
-        StartCoroutine(DelayedCauseAnimationStart());
+        StartCoroutine(DelayedAnimationStart(isGameOver));
+        if(!isGameOver) StartCoroutine(DelayedCauseAnimationStart());
     }
 
-    IEnumerator DelayedAnimationStart()
+    IEnumerator DelayedAnimationStart(bool isGameOver)
     {
-        yield return new WaitForSeconds(DeathLength.DEATH_LENGTH);
+        Debug.Log("isCalled");
+        if(!isGameOver) yield return new WaitForSeconds(DeathLength.DEATH_LENGTH);
+        else yield return new WaitForSeconds(DeathLength.GAME_OVER_LENGTH);
         animator.Play("GeneralAnimationZoop");
     }
 

@@ -68,4 +68,18 @@ public class TypeInit : MonoBehaviour
             this.audioClip = audioClip;
         }
     }
+
+    [Serializable]
+    public struct WallsFilled
+    {
+        public bool N;
+        public bool E;
+        public bool S;
+        public bool W;
+
+        public override string ToString()
+        {
+            return "Northern Wall: " + N + "; Eastern Wall: " + E + "; Southern Wall: " + S + "; Western Wall: " + W;
+        }
+    }
 }

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd6416662abcb8479821c4d007b96c5, type: 3}
+  m_Name: PossessedTeddies
+  m_EditorClassIdentifier: 
+  dialogLines:
+  - sender: 'Beta:'
+    message: Don't worry about the teddy bears... Only some of them bite.
+    audioClip: {fileID: 8300000, guid: 02e27e8745d8c0e4eac92d30226740e0, type: 3}
+  - sender: 'CHARACTER.MAIN.NAME:'
+    message: Huh?
+    audioClip: {fileID: 8300000, guid: d0527320700bdb740bbc7d610373f4bd, type: 3}
+  - sender: 'Beta:'
+    message: Nothing. Go on.
+    audioClip: {fileID: 8300000, guid: e501458dd49e16c41acdcdfa304f2d0c, type: 3}

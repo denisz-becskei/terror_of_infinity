@@ -17,7 +17,7 @@ public class OnChangeChunkType : MonoBehaviour
 
     private Sinewave sinewave;
 
-    private void Start()
+    private void Awake()
     {
         sinewaveContainer.SetActive(true);
         sinewave = sinewaveContainer.GetComponentInChildren<Sinewave>();
@@ -54,9 +54,10 @@ public class OnChangeChunkType : MonoBehaviour
                 break;
             case ChunkType.ChromaticConondrum:
                 sinewaveContainer.SetActive(true);
-                sinewave.isActive = true;
                 sinewaveTexture.SetActive(true);
+                sinewave.isActive = true;
                 ccp.isEnabled = true;
+                statusEffectController.AddStatusEffect("FeelingVibrations", false);
                 break;
             case ChunkType.PossessedTeddies:
                 statusEffectController.AddStatusEffect("PowerSurge", true, 88.4f);
@@ -90,8 +91,8 @@ public class OnChangeChunkType : MonoBehaviour
                 sinewave.isActive = false;
                 sinewaveContainer.SetActive(false);
                 sinewaveTexture.SetActive(false);
-
                 ccp.isEnabled = false;
+                statusEffectController.RemoveStatusEffect("FeelingVibrations", false);
                 break;
             case ChunkType.PossessedTeddies:
                 statusEffectController.RemoveStatusEffect("PowerSurge", true, 46.7f);

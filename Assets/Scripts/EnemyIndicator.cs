@@ -15,6 +15,14 @@ public class EnemyIndicator : MonoBehaviour
 
     public static void UpdateEnemy(AgentScriptableObject agentType)
     {
-        enemyIndicator.sprite = agentType.agentSprite;
+        if (agentType == null)
+        {
+            enemyIndicator.sprite = null;
+        }
+        else
+        {
+            enemyIndicator.sprite = agentType.agentSprite;
+        }
+        
     }
 }

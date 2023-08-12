@@ -1,4 +1,5 @@
 using UnityEngine;
+using static TypeInit;
 
 public class Room : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Room : MonoBehaviour
     private SurfaceSoundScriptableObject surfaceSound = null;
 
     private GameObject player;
+
+    public WallsFilled walls;
 
 
     private void Start()

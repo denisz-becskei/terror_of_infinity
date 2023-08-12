@@ -17,6 +17,9 @@ public class TypewriterUI : MonoBehaviour
 
     [SerializeField] GameObject skullScreen;
     [SerializeField] GameObject continueButton;
+    [SerializeField] GameObject returnButton;
+    [SerializeField] DataPersistanceManager dpm;
+    [SerializeField] private DeathHandler dh;
 
     void Start()
     {
@@ -70,7 +73,16 @@ public class TypewriterUI : MonoBehaviour
             audioSource.Play();
             yield return new WaitForSeconds(timeBtwChars);
         }
+
+        if (dpm.GetGameState().NUMBER_OF_LIVES == 1)
+        {
+            yield return new WaitForSeconds(2f);
+            dh.StartGameOverSequence();
+            yield return null;
+        }
+        
         continueButton.GetComponent<ContinueButtonController>().Animate();
+        returnButton.GetComponent<ContinueButtonController>().Animate();
         if (leadingChar != "" && !successfullySkipped)
         {
             _tmpProText.text = _tmpProText.text.Substring(0, _tmpProText.text.Length - leadingChar.Length);

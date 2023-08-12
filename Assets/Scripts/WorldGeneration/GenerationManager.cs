@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
@@ -11,7 +12,6 @@ public class GenerationManager : MonoBehaviour
         Idle,
         GeneratingRooms,
         GeneratingLights,
-        GeneratingMainRoom
     }
 
     public enum ChunkType
@@ -84,7 +84,7 @@ public class GenerationManager : MonoBehaviour
 
         // TODO:
         // Trigger Enemy
-        StartCoroutine(Rebake());
+        StartCoroutine(DelayRebake());
         //if(navMeshUpdateRoutine == null)
         //{
         //    navMeshUpdateRoutine = StartCoroutine(UpdateNavMesh());
@@ -102,8 +102,6 @@ public class GenerationManager : MonoBehaviour
         Vector3 cleanRoomPos = cleanRoom.transform.position;
         player.transform.position = new Vector3(cleanRoomPos.x, 3f, cleanRoomPos.z);
         player.SetActive(true);
-        
-        //Camera.main.gameObject.SetActive(false);
     }
 
     private void GenerateChunkAtPosition(IntVector2 position)
@@ -161,8 +159,7 @@ public class GenerationManager : MonoBehaviour
 
         if (navMeshBuildConcluded)
         {
-            Debug.Log("Starting Update Routine");
-            StartCoroutine(Rebake());
+            StartCoroutine(DelayRebake());
         }
 
         // If this iteration contains more Chunks than ChunkLimit, then remove 10% of the Chunks that are the farthest from the player
@@ -196,7 +193,7 @@ public class GenerationManager : MonoBehaviour
                 IntVector2 chunkPosition = currentChunk + new IntVector2(i, j);
                 if (ChunkMap.GetValue(new IntVector2(chunkPosition.x, chunkPosition.y)) == "0") // If the Chunk doesn't exist
                 {
-                    GenerateChunkAtPosition(new IntVector2(chunkPosition.x, chunkPosition.y)); // Generate the Chunk @ that position
+                    StartCoroutine(DelayChunkGen(chunkPosition));
                 }
             }
         }
@@ -212,5 +209,17 @@ public class GenerationManager : MonoBehaviour
         }
         
         yield return nms.UpdateNavMesh(nms.navMeshData);
+    }
+
+    private IEnumerator DelayRebake()
+    {
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(Rebake());
+    }
+
+    private IEnumerator DelayChunkGen(IntVector2 chunkPosition)
+    {
+        yield return new WaitForSeconds(0.25f);
+        GenerateChunkAtPosition(new IntVector2(chunkPosition.x, chunkPosition.y)); // Generate the Chunk @ chunk position
     }
 }

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogLines:
   - sender: 'CHARACTER.MAIN.NAME:'
-    message: Why is it so red here? It is giving out a very creepy atmosphere...
+    message: Why is it so - red - here? It is giving out a very creepy atmosphere...
+      I do not like this.
     audioClip: {fileID: 8300000, guid: 2f27615546c06c44ca1f2160292db3f6, type: 3}
   - sender: 'CHARACTER.MAIN.NAME:'
     message: The smoke isn't helping either.

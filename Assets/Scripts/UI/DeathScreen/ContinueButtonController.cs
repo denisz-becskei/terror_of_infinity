@@ -15,7 +15,7 @@ public class ContinueButtonController : MonoBehaviour
     
     private void Start()
     {
-        uiContainerAnimator = GameObject.FindGameObjectWithTag("UIContainer").GetComponent<Animator>();
+        uiContainerAnimator = GameObject.FindGameObjectWithTag("UIContinueContainer").GetComponent<Animator>();
         skullContainer = GameObject.FindGameObjectWithTag("SkullContainer");
         audioSource = transform.parent.GetComponent<AudioSource>();
         dh = GameObject.FindGameObjectWithTag("GameController").GetComponent<DeathHandler>();
@@ -31,6 +31,12 @@ public class ContinueButtonController : MonoBehaviour
             animator.Play("SkullAnimationZoopOut");
         }
         StartCoroutine(DelayFinishSequence());
+    }
+
+    public void ReturnToMainMenu()
+    {
+        // TODO: RETURN TO MAIN MENU
+        Debug.Log("Returning to Main Menu");
     }
 
     public void Animate()

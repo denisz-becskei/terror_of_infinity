@@ -65,8 +65,14 @@ public class DataPersistanceManager : MonoBehaviour
 
     public void ReformatGame()
     {
-        gameStates = new GameStates(gameStates.NUMBER_OF_LIVES);
+        gameStates = new GameStates(gameStates.NUMBER_OF_LIVES, gameStates.PLAYER_NAME);
         dataHandler.Save(gameStates);
+    }
+
+    public void DeleteGame()
+    {
+        gameStates = null;
+        dataHandler.Delete();
     }
 
     private void OnApplicationQuit()

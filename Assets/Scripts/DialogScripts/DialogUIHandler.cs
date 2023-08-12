@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DialogUIHandler : MonoBehaviour
+public class DialogUIHandler : MonoBehaviour, IDataPersistance
 {
     [SerializeField] private List<string> scriptTitles = new List<string>();
     [SerializeField] private List<DialogScriptableObject> scripts = new List<DialogScriptableObject>();
@@ -23,7 +23,10 @@ public class DialogUIHandler : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(IntroStart());
+        if (Actor.CHARACTER_MAIN_NAME == "")
+        {
+            StartCoroutine(IntroStart());
+        }
     }
 
     public bool Play(string scriptName, bool canInterrupt)
@@ -124,10 +127,10 @@ public class DialogUIHandler : MonoBehaviour
         {
             StopCoroutine(typeRoutine);
         }
-
-        if (dialogRoutine == null) return;
+        
         SetSpeaker("");
         SetSpeech("");
+        if (dialogRoutine == null) return;
         isDialogRunning = false;
         audioSource.Stop();
         isInterrupted = true;
@@ -161,7 +164,7 @@ public class DialogUIHandler : MonoBehaviour
         for(uint i = 0; i < speech.Length; i++)
         {
             speechText.text += speech[(int)i];
-            yield return new WaitForSeconds(typewriteEffectDelay);
+            yield return new WaitForSeconds(typewriteEffectDelay / 1.1f);
         }
     }
 
@@ -195,7 +198,14 @@ public class DialogUIHandler : MonoBehaviour
         return scripts[dialogIndex];
     }
 
-    
 
+    public void LoadData(GameStates data)
+    {
+        Actor.CHARACTER_MAIN_NAME = data.PLAYER_NAME;
+    }
 
+    public void SaveData(ref GameStates data)
+    {
+        data.PLAYER_NAME = Actor.CHARACTER_MAIN_NAME;
+    }
 }

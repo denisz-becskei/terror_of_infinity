@@ -21,6 +21,7 @@ TagManager:
   - ContinueButton
   - DataPersistance
   - FallenAngel
+  - UIContinueContainer
   layers:
   - Default
   - TransparentFX
