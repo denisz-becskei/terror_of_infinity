@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a36f7de3c6ba48048a079b51bf4de25f, type: 2}
+  - {fileID: 2100000, guid: f7a4c3503914bb545bd480b253d1998c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -145,7 +145,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a36f7de3c6ba48048a079b51bf4de25f, type: 2}
+  - {fileID: 2100000, guid: f7a4c3503914bb545bd480b253d1998c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -251,7 +251,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a36f7de3c6ba48048a079b51bf4de25f, type: 2}
+  - {fileID: 2100000, guid: f7a4c3503914bb545bd480b253d1998c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -494,3 +494,9 @@ MonoBehaviour:
   baseRoomGenOverride: 0
   groundMaterial: {fileID: 2100000, guid: a36f7de3c6ba48048a079b51bf4de25f, type: 2}
   roofMaterial: {fileID: 2100000, guid: a36f7de3c6ba48048a079b51bf4de25f, type: 2}
+  surfaceSound: {fileID: 0}
+  walls:
+    N: 0
+    E: 0
+    S: 0
+    W: 0

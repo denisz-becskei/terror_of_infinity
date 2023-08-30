@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -11,6 +12,8 @@ public class Spawner : MonoBehaviour
 
     [SerializeField] float[] rotations;
     [SerializeField] float[] scales;
+
+    [SerializeField] private float respawnTimer = 0;
 
     private GameObject player;
     private GameObject prefabToSpawn;
@@ -39,6 +42,7 @@ public class Spawner : MonoBehaviour
         if (spawnerActive[0] && spawnerActive[1])
         {
             Spawn();
+            spawnerActive[1] = false;
         }
     }
 
@@ -67,6 +71,19 @@ public class Spawner : MonoBehaviour
         spawned.transform.parent = transform.parent;
         spawned.transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + 1f, transform.localPosition.z);
 
-        Destroy(gameObject, 2f);
+        if (respawnTimer == 0)
+        {
+            Destroy(gameObject, 2f);
+        }
+        else
+        {
+            StartCoroutine(RespawnRoutine());
+        }
+    }
+
+    IEnumerator RespawnRoutine()
+    {
+        yield return new WaitForSeconds(respawnTimer);
+        Spawn();
     }
 }

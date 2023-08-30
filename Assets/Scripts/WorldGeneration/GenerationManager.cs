@@ -34,6 +34,7 @@ public class GenerationManager : MonoBehaviour
         ChromaticConondrum,
         BrightOfAngels,
         DimensionalRift,
+        GuardingFlame,
 
         Purgatory
     }

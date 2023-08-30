@@ -52,7 +52,8 @@ public class WorldWideScripts : MonoBehaviour
         {14, "GateToReality" },
         {15, "ChromaticConondrum" },
         {16, "BrightOfAngels" },
-        {17, "DimensionalRift" }
+        {17, "DimensionalRift" },
+        {18, "GuardingFlame" }
     };
 
     public static GameObject GetFurthestRoomFromGameObject(Transform compare)
@@ -181,6 +182,8 @@ public class WorldWideScripts : MonoBehaviour
                 return "BoA";
             case ChunkType.DimensionalRift:
                 return "DR";
+            case ChunkType.GuardingFlame:
+                return "GF";
             default:
                 return "0";
         }
@@ -224,7 +227,8 @@ public class WorldWideScripts : MonoBehaviour
             case ChunkType.ChromaticConondrum:
             case ChunkType.BrightOfAngels:
                 return agentTypes.agentTypes[6];
-            // TODO: Add Hollow Flame
+            case ChunkType.GuardingFlame:
+                return agentTypes.agentTypes[7];
             case ChunkType.DimensionalRift:
             case ChunkType.InfinityMaze:
                 return agentTypes.agentTypes[8];

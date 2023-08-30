@@ -2440,7 +2440,7 @@ MonoBehaviour:
   nms: {fileID: 954883883}
   enemyController: {fileID: 1602996568}
   blockSize: 64
-  chunkOverride: 3
+  chunkOverride: 18
   chunksGenerated: 0
   currentState: 0
 --- !u!4 &599674792
@@ -2488,6 +2488,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 347a3e19f2f528d4b82d796fb75e038b, type: 2}
   - {fileID: 11400000, guid: 311f514fd4c3cc145a930ec317cba2a0, type: 2}
   - {fileID: 11400000, guid: b0cb6c57386d9fe4c9c3461334eaaa23, type: 2}
+  - {fileID: 11400000, guid: 4da6490ebe79aec49bd5742caa604b0e, type: 2}
 --- !u!114 &599674794
 MonoBehaviour:
   m_ObjectHideFlags: 0

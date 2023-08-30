@@ -19,7 +19,7 @@ public class PlayerInformation : MonoBehaviour, IDataPersistance
     [SerializeField] private DialogUIHandler dialog;
 
     private Coroutine updatePositionRoutine;
-    private Dictionary<ChunkType, bool> wereVisited = new Dictionary<ChunkType, bool>();
+    private Dictionary<ChunkType, bool> wasVisited = new Dictionary<ChunkType, bool>();
     private bool isDialogSystemRunning = false;
 
     private void Start()
@@ -89,7 +89,7 @@ public class PlayerInformation : MonoBehaviour, IDataPersistance
 
     private void DialogUpdateAction()
     {
-        if(wereVisited.Count == 0)
+        if(wasVisited.Count == 0)
         {
             PopulateVisitedDictionary();
         }
@@ -97,21 +97,21 @@ public class PlayerInformation : MonoBehaviour, IDataPersistance
         if(currentChunkType == ChunkType.Purgatory)
         {
             return;
-        } else if (wereVisited[currentChunkType] == false)
+        } else if (wasVisited[currentChunkType] == false)
         {
             bool success = dialog.Play(WorldWideScripts.chunkTypesByInt[((int)currentChunkType)], false);
             if (success)
             {
-                wereVisited[currentChunkType] = true;
+                wasVisited[currentChunkType] = true;
             }
         }
     }
 
     private void PopulateVisitedDictionary()
     {
-        for(int i = 1; i < 18; i++)
+        for(int i = 1; i < 19; i++)
         {
-            wereVisited.Add((ChunkType)i, false);
+            wasVisited.Add((ChunkType)i, false);
         }
     }
 
