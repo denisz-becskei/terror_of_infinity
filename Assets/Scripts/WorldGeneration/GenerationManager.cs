@@ -42,6 +42,7 @@ public class GenerationManager : MonoBehaviour
     [SerializeField] GameObject worldGrid;
     [SerializeField] GameObject player;
     [SerializeField] GameObject chunkHandler;
+    [SerializeField] GameObject bitPrefab;
 
     [SerializeField] NavMeshSurface nms;
     [SerializeField] GameObject enemyController;
@@ -115,7 +116,8 @@ public class GenerationManager : MonoBehaviour
                     gct.GetChunkAtPosition(position.x, position.y),
                     worldGrid,
                     enemyController.GetComponent<EnemyController>(),
-                    position);
+                    position,
+                    bitPrefab);
         }
         else
         {
@@ -123,7 +125,7 @@ public class GenerationManager : MonoBehaviour
                     gct.OverrideChunkType(chunkOverride),
                     worldGrid,
                     enemyController.GetComponent<EnemyController>(),
-                    position);
+                    position, bitPrefab);
         }
         chunk.Generate();
         ChunkMap.SetValue(position, WorldWideScripts.ChunkTypeToAbbrString(chunk.GetChunkType()));
@@ -164,11 +166,12 @@ public class GenerationManager : MonoBehaviour
         }
 
         // If this iteration contains more Chunks than ChunkLimit, then remove 10% of the Chunks that are the farthest from the player
-        int originalChunkCount = currentChunkCount;
+        float originalChunkCount = currentChunkCount;
         int chunkCountBeforeDeletion = currentChunkCount;
         while (chunkCountBeforeDeletion > chunkLimit)
         {
-            int countToRemove = Mathf.CeilToInt(originalChunkCount * 0.1f);
+            originalChunkCount *= 0.1f;
+            int countToRemove = Mathf.CeilToInt(originalChunkCount);
             for (int i = 0; i < countToRemove; i++)
             {
                 IntVector2 chunkPosition = orderedDistances.Last().Key;
@@ -182,9 +185,8 @@ public class GenerationManager : MonoBehaviour
             chunkCountBeforeDeletion -= countToRemove;
             chunksGenerated = ChunkMap.GetMapLength();
         }
-
-
-        // Check if every Chunk is spawned around the player in a ChunkRange x ChunkRange area
+        
+        // Check if every Chunk is spawned around the player in a CheckerRange x CheckerRange area
         int halfRange = Mathf.FloorToInt(checkerRange / 2f);
         for (int i = -halfRange; i <= halfRange; i++)
         {

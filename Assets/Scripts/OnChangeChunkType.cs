@@ -60,7 +60,11 @@ public class OnChangeChunkType : MonoBehaviour
                 statusEffectController.AddStatusEffect("FeelingVibrations", false);
                 break;
             case ChunkType.PossessedTeddies:
-                statusEffectController.AddStatusEffect("PowerSurge", true, 88.4f);
+                statusEffectController.AddStatusEffect("PowerSurge", true, false, 
+                    0, 88.4f);
+                break;
+            case ChunkType.GuardingFlame:
+                statusEffectController.AddStatusEffect("Darkness", true, true, 1);
                 break;
         }
     }

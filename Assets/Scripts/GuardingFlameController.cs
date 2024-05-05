@@ -7,12 +7,19 @@ public class GuardingFlameController : MonoBehaviour
     private Vector3 target;
     private readonly float speed = 1f;
     private float lifeTime;
+    private GameObject player;
+    private StatusEffectController statusEffectController;
+
+    private Coroutine checkPlayerDistance;
     
-    // Start is called before the first frame update
     void Start()
     {
-        this.lifeTime = WorldWideScripts.GetTotallyRandomNumberBetween(10, 45);
+        this.lifeTime = WorldWideScripts.GetPureRandomNumberBetween(10, 45);
+        this.player = GameObject.FindGameObjectWithTag("Player");
+        this.statusEffectController = GameObject.FindGameObjectWithTag("StatusEffectController")
+            .GetComponent<StatusEffectController>();
         StartCoroutine(EndLife());
+        checkPlayerDistance = StartCoroutine(CheckPlayerDistance());
         SelectTarget();
     }
 
@@ -32,15 +39,28 @@ public class GuardingFlameController : MonoBehaviour
     {
         Room[] rooms = GameObject.FindObjectsByType<Room>(FindObjectsSortMode.None);
         this.target = new Vector3(
-            rooms[WorldWideScripts.GetTotallyRandomNumberBetween(0, rooms.Length)].transform.position.x,
+            rooms[WorldWideScripts.GetPureRandomNumberBetween(0, rooms.Length)].transform.position.x,
             2f,
-            rooms[WorldWideScripts.GetTotallyRandomNumberBetween(0, rooms.Length)].transform.position.z
+            rooms[WorldWideScripts.GetPureRandomNumberBetween(0, rooms.Length)].transform.position.z
             );
     }
 
     IEnumerator EndLife()
     {
         yield return new WaitForSeconds(this.lifeTime);
+        StopCoroutine(checkPlayerDistance);
         Destroy(this.gameObject);
+    }
+
+    IEnumerator CheckPlayerDistance()
+    {
+        yield return new WaitForSeconds(UnityEngine.Random.Range(1f, 3f));
+        float distance = WorldWideScripts.CalculateDistance(this.gameObject, player);
+        if (distance < 5f)
+        {
+            statusEffectController.AddStatusEffect("Darkness", true, true, -1);
+        }
+
+        checkPlayerDistance = StartCoroutine(CheckPlayerDistance());
     }
 }

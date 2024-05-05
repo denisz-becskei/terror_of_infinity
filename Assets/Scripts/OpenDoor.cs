@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class OpenDoor : MonoBehaviour
 {
-    public int doorType = 0;
+    public int doorType;
     private KeyCode openChar;
-    public bool isDoorOpen = false;
+    public bool isDoorOpen;
 
     private Ray rayOrigin;
     private RaycastHit hitInfo;
@@ -23,67 +23,65 @@ public class OpenDoor : MonoBehaviour
         {
             return;
         }
-        else
-        {
-            rayOrigin = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(rayOrigin, out hitInfo, 5f))
-            {
-                if (hitInfo.collider.transform != transform)
-                {
-                    return;
-                }
-            }
 
-            switch (doorType)
+        rayOrigin = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(rayOrigin, out hitInfo, 5f))
+        {
+            if (hitInfo.collider.transform != transform)
             {
-                case 0:
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        GetComponent<Animator>().Play("JustDoorOpen");
-                        foreach(BoxCollider collider in GetComponents<BoxCollider>())
-                        {
-                            collider.enabled = false;
-                        }
-                        isDoorOpen = true;
-                    }
-                    break;
-                case 1:
-                    if (Input.GetKeyDown(openChar))
-                    {
-                        GetComponent<Animator>().Play("KeyDoorOpen");
-                        foreach (BoxCollider collider in GetComponents<BoxCollider>())
-                        {
-                            collider.enabled = false;
-                        }
-                        isDoorOpen = true;
-                    }
-                    break;
-                case 2:
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        Animator[] animators = transform.parent.GetComponentsInChildren<Animator>();
-                        OpenDoor[] openDoors = transform.parent.GetComponentsInChildren<OpenDoor>();
-                        foreach (Animator animator in animators)
-                        {
-                            if (animator.GetComponent<SlowDoorScript>().side == 0)
-                            {
-                                animator.Play("SlowDoorLeftOpen");
-                            }
-                            else
-                            {
-                                animator.Play("SlowDoorRightOpen");
-                            }
-                        }
-                        foreach (OpenDoor openDoor in openDoors)
-                        {
-                            openDoor.isDoorOpen = true;
-                        }
-                    }
-                    break;
-                default:
-                    Debug.LogError("Not supposed to be here");
-                    break;
+                return;
             }
+        }
+
+        switch (doorType)
+        {
+            case 0:
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    GetComponent<Animator>().Play("JustDoorOpen");
+                    foreach(BoxCollider collider in GetComponents<BoxCollider>())
+                    {
+                        collider.enabled = false;
+                    }
+                    isDoorOpen = true;
+                }
+                break;
+            case 1:
+                if (Input.GetKeyDown(openChar))
+                {
+                    GetComponent<Animator>().Play("KeyDoorOpen");
+                    foreach (BoxCollider collider in GetComponents<BoxCollider>())
+                    {
+                        collider.enabled = false;
+                    }
+                    isDoorOpen = true;
+                }
+                break;
+            case 2:
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Animator[] animators = transform.parent.GetComponentsInChildren<Animator>();
+                    OpenDoor[] openDoors = transform.parent.GetComponentsInChildren<OpenDoor>();
+                    foreach (Animator animator in animators)
+                    {
+                        if (animator.GetComponent<SlowDoorScript>().side == 0)
+                        {
+                            animator.Play("SlowDoorLeftOpen");
+                        }
+                        else
+                        {
+                            animator.Play("SlowDoorRightOpen");
+                        }
+                    }
+                    foreach (OpenDoor openDoor in openDoors)
+                    {
+                        openDoor.isDoorOpen = true;
+                    }
+                }
+                break;
+            default:
+                Debug.LogError("Not supposed to be here");
+                break;
         }
     }
 

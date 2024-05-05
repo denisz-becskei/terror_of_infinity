@@ -12,6 +12,6 @@ public class GeneratePrompt : MonoBehaviour
 
     public void Generate()
     {
-        GetComponent<TMP_Text>().text = promptList[WorldWideScripts.GetTotallyRandomNumberBetween(0, promptList.Length)].Trim();
+        GetComponent<TMP_Text>().text = promptList[WorldWideScripts.GetPureRandomNumberBetween(0, promptList.Length)].Trim();
     }
 }

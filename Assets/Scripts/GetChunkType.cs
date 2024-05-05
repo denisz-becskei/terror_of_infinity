@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using static GenerationManager;
 
@@ -12,7 +13,7 @@ public class GetChunkType : MonoBehaviour
         difficultyShift = Random.Range(0, 900000);
     }
 
-    private ChunkTypeScriptableObject SelectChunkType(float objectiveScore, float difficultyScore)
+    private KeyValuePair<ChunkTypeScriptableObject, string> SelectChunkType(float objectiveScore, float difficultyScore)
     {
         foreach(ChunkTypeScriptableObject chunkType in chunkTypes)
         {
@@ -20,14 +21,14 @@ public class GetChunkType : MonoBehaviour
             {
                 if (chunkType.ranges[2] < difficultyScore && difficultyScore <= chunkType.ranges[3])
                 {
-                    return chunkType;
+                    return new KeyValuePair<ChunkTypeScriptableObject, string>(chunkType, WorldWideScripts.GetObjectiveTypeByValue(objectiveScore));
                 }
             }
         }
-        return chunkTypes[0];
+        return new KeyValuePair<ChunkTypeScriptableObject, string>(chunkTypes[Random.Range(0, chunkTypes.Length)], WorldWideScripts.GetObjectiveTypeByValue(objectiveScore));
     }
 
-    public ChunkTypeScriptableObject GetChunkAtPosition(int positionX, int positionY)
+    public KeyValuePair<ChunkTypeScriptableObject, string> GetChunkAtPosition(int positionX, int positionY)
     {
         float xObjective = objectiveShift + (float)positionX / 32 * 2;
         float yObjective = objectiveShift + (float)positionY / 32 * 2;
@@ -41,15 +42,16 @@ public class GetChunkType : MonoBehaviour
         
     }
 
-    public ChunkTypeScriptableObject OverrideChunkType(ChunkType chunkType)
+    public KeyValuePair<ChunkTypeScriptableObject, string> OverrideChunkType(ChunkType chunkType)
     {
         foreach(ChunkTypeScriptableObject chunkType_ in chunkTypes)
         {
             if (chunkType_.chunkType == chunkType)
             {
-                return chunkType_;
+                return new KeyValuePair<ChunkTypeScriptableObject, string>(chunkType_, WorldWideScripts.GetObjectiveTypeByValue(Random.Range(0, 1)));
             }
         }
-        return chunkTypes[0];
+        return new KeyValuePair<ChunkTypeScriptableObject, string>(chunkTypes[Random.Range(0, chunkTypes.Length)], 
+            WorldWideScripts.GetObjectiveTypeByValue(Random.Range(0, 1)));;
     }
 }

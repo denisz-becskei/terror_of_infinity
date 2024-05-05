@@ -56,6 +56,11 @@ public class WorldWideScripts : MonoBehaviour
         {18, "GuardingFlame" }
     };
 
+    public static List<string> objectiveTypes = new List<string>()
+    {
+        "BLACK", "BROWN", "ORANGE", "PURPLE", "MAGENTA", "BLUE", "GREEN", "YELLOW", "RED", "WHITE"
+    };
+
     public static GameObject GetFurthestRoomFromGameObject(Transform compare)
     {
         GameObject furthest = null;
@@ -79,7 +84,8 @@ public class WorldWideScripts : MonoBehaviour
         while (!ready)
         {
             cleanRoom = GenerationManager.rooms[Random.Range(0, GenerationManager.rooms.Count)];
-            if (cleanRoom.GetComponent<Room>().centerAvailable) {
+            if (cleanRoom.GetComponent<Room>().centerAvailable)
+            {
                 ready = true;
             }
         }
@@ -126,7 +132,7 @@ public class WorldWideScripts : MonoBehaviour
         Chunk[] chunks = FindObjectsByType<Chunk>(FindObjectsSortMode.None);
         foreach (Chunk chunk in chunks)
         {
-            if(chunk.chunkCoordinates.x == coordinates.x && chunk.chunkCoordinates.y == coordinates.y)
+            if (chunk.chunkCoordinates.x == coordinates.x && chunk.chunkCoordinates.y == coordinates.y)
             {
                 return chunk;
             }
@@ -138,7 +144,7 @@ public class WorldWideScripts : MonoBehaviour
         return Mathf.PerlinNoise(x, y);
     }
 
-    public static int GetTotallyRandomNumberBetween(int a, int b)
+    public static int GetPureRandomNumberBetween(int a, int b)
     {
         System.Random rng = new System.Random();
         return rng.Next(a, b);
@@ -146,7 +152,7 @@ public class WorldWideScripts : MonoBehaviour
 
     public static string ChunkTypeToAbbrString(ChunkType chunkType)
     {
-        switch(chunkType)
+        switch (chunkType)
         {
             case ChunkType.Entrance:
                 return "E";
@@ -204,7 +210,8 @@ public class WorldWideScripts : MonoBehaviour
 
     public static AgentScriptableObject GetAgentByChunkType(ChunkType chunkType, AgentTypeContainerScriptableObject agentTypes)
     {
-        switch (chunkType) {
+        switch (chunkType)
+        {
             case ChunkType.Entrance:
             case ChunkType.EntangledDarkness:
             case ChunkType.MadnessInRed:
@@ -232,7 +239,7 @@ public class WorldWideScripts : MonoBehaviour
             case ChunkType.DimensionalRift:
             case ChunkType.InfinityMaze:
                 return agentTypes.agentTypes[8];
-            //TODO: Add Glitch
+                //TODO: Add Glitch
         }
         return null;
     }
@@ -240,5 +247,78 @@ public class WorldWideScripts : MonoBehaviour
     public static Vector3 ModifyV3(Vector3 input, float modx, float mody, float modz)
     {
         return new Vector3(input.x + modx, input.y + mody, input.z + modz);
+    }
+
+    public static string GetObjectiveTypeByValue(float value)
+    {
+        for (int i = 0; i < objectiveTypes.Count; i++)
+        {
+            if (i * 0.1f >= value && value <= i * 0.1f + 0.1f)
+            {
+                return objectiveTypes[i];
+            }
+        }
+
+        return null;
+    }
+
+    public static Color ToColor(string color)
+    {
+        switch (color)
+        {
+            case "black":
+                return new Color(0, 0, 0, 1);
+            case "brown":
+                return new Color(0.4f, 0, 0, 1);
+            case "orange":
+                return new Color(1, 0.5f, 0, 1);
+            case "purple":
+                return new Color(0.4f, 0, 0.4f, 1);
+            case "magenta":
+                return new Color(1, 0, 1, 1);
+            case "blue":
+                return new Color(0, 0, 1, 1);
+            case "green":
+                return new Color(0, 1, 0, 1);
+            case "yellow":
+                return new Color(1, 1, 0, 1);
+            case "red":
+                return new Color(1, 0, 0, 1);
+            case "white":
+                return new Color(1, 1, 1, 1);
+            default:
+                return new Color(1, 1, 1, 1);
+        }
+        return new Color(1, 1, 1, 1);
+    }
+
+    public static int GetValueOfColor(string color)
+    {
+        switch (color)
+        {
+            case "black":
+                return 100;
+            case "brown":
+                return 200;
+            case "orange":
+                return 300;
+            case "purple":
+                return 400;
+            case "magenta":
+                return 500;
+            case "blue":
+                return 600;
+            case "green":
+                return 700;
+            case "yellow":
+                return 800;
+            case "red":
+                return 900;
+            case "white":
+                return 1000;
+            default:
+                return 0;
+        }
+        return 0;
     }
 }

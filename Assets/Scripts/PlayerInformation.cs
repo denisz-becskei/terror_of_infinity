@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using static GenerationManager;
 
 public class PlayerInformation : MonoBehaviour, IDataPersistance
@@ -18,9 +19,15 @@ public class PlayerInformation : MonoBehaviour, IDataPersistance
 
     [SerializeField] private DialogUIHandler dialog;
 
+    [SerializeField] private TMP_Text scoreText;
+
     private Coroutine updatePositionRoutine;
     private Dictionary<ChunkType, bool> wasVisited = new Dictionary<ChunkType, bool>();
     private bool isDialogSystemRunning = false;
+
+    private Dictionary<String, int> numberOfBits;
+
+    public long currentScore = 0;
 
     private void Start()
     {
@@ -77,6 +84,8 @@ public class PlayerInformation : MonoBehaviour, IDataPersistance
     public void LoadData(GameStates data)
     {
         playerCurrentWorldPosition = data.PLAYER_WORLD_COORDINATES;
+        numberOfBits = data.PICKED_UP_BITS;
+        currentScore = data.PLAYER_SCORE;
         Debug.Log("Loading World Position");
         // TODO: Move player there
     }
@@ -84,7 +93,13 @@ public class PlayerInformation : MonoBehaviour, IDataPersistance
     public void SaveData(ref GameStates data)
     {
         data.PLAYER_WORLD_COORDINATES = playerCurrentWorldPosition;
+        data.PICKED_UP_BITS = this.numberOfBits;
+        data.PLAYER_SCORE = this.currentScore;
         Debug.Log("Saving World Position");
+    }
+
+    public void UpdateScore() {
+        this.scoreText.text = currentScore.ToString();
     }
 
     private void DialogUpdateAction()
@@ -119,5 +134,10 @@ public class PlayerInformation : MonoBehaviour, IDataPersistance
     {
         yield return new WaitForSeconds(5f);
         isDialogSystemRunning = true;
+    }
+
+    public void PickedUpBitOfColor(String color)
+    {
+        this.numberOfBits[color] += 1;
     }
 }

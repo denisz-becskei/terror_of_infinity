@@ -20,7 +20,7 @@ public class Chunk : MonoBehaviour
     private int chunkSizeSqrt;
 
     // GameObjects from Controller
-    private GameObject emptyRoomPrefab, lightPrefab, worldGrid;
+    private GameObject emptyRoomPrefab, lightPrefab, worldGrid, bitPrefab;
     private List<GameObject> roomPrefabs;
     private EnemyController ec;
 
@@ -33,6 +33,8 @@ public class Chunk : MonoBehaviour
     private List<GameObject> currentChunkRooms;
     private int? GAME_SEED = null;
 
+    private string objectiveType;
+
     private void Awake()
     {
         while(GAME_SEED == null)
@@ -42,19 +44,22 @@ public class Chunk : MonoBehaviour
         Random.InitState((int)GAME_SEED);
     }
 
-    public void Setup(int chunkSize, ChunkTypeScriptableObject chunkType, GameObject worldGrid, EnemyController ec, IntVector2 chunkCoordinates)
+    public void Setup(int chunkSize, KeyValuePair<ChunkTypeScriptableObject, string> chunkType, GameObject worldGrid, EnemyController ec, IntVector2 chunkCoordinates, GameObject bitPrefab)
     {
         this.chunkSize = chunkSize;
-        this.mapBrightness = chunkType.mapBrightness;
-        this.mapEmptiness = chunkType.mapEmptiness;
-        this.type = chunkType.chunkType;
-        this.emptyRoomPrefab = chunkType.emptyRoomPrefab;
+        this.mapBrightness = chunkType.Key.mapBrightness;
+        this.mapEmptiness = chunkType.Key.mapEmptiness;
+        this.type = chunkType.Key.chunkType;
+        this.emptyRoomPrefab = chunkType.Key.emptyRoomPrefab;
         this.worldGrid = worldGrid;
-        this.roomPrefabs = new List<GameObject>(chunkType.roomPrefabs);
-
-        this.lightPrefab = chunkType.lightPrefab;
+        this.roomPrefabs = new List<GameObject>(chunkType.Key.roomPrefabs);
+        
+        this.lightPrefab = chunkType.Key.lightPrefab;
         this.ec = ec;
         this.chunkCoordinates = chunkCoordinates;
+
+        this.bitPrefab = bitPrefab;
+        this.objectiveType = chunkType.Value;
 
         chunkSizeSqrt = (int)Mathf.Sqrt(chunkSize);
         gm = FindFirstObjectByType<GenerationManager>();
@@ -99,6 +104,10 @@ public class Chunk : MonoBehaviour
                         rp.RoomPositionInContainer = new Vector2(roomCoordX, roomCoordY);
                         newRoom.transform.localPosition = currentPos;
                         newRoom.transform.rotation = Quaternion.identity;
+                        if (newRoom.GetComponent<Room>().centerAvailable && WorldWideScripts.Chance(50))
+                        {
+                            newRoom.AddComponent<BitGeneration>().GenerateBit(bitPrefab, objectiveType);
+                        }
                         rooms.Add(newRoom);
                         currentChunkRooms.Add(newRoom);
                         roomCoordX++;

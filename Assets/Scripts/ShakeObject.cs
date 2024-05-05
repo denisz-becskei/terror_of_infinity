@@ -38,7 +38,7 @@ public class ShakeObject : MonoBehaviour
                 float x = Random.value * 2f - 1f;
                 float y = Random.value * 2f - 1f;
                 float noise = Mathf.PerlinNoise(Time.time * noiseMagnitude, 0f);
-                transform.localPosition = originalPos + new Vector3(x, y, 0f) * shakeAmount * noise;
+                transform.localPosition = originalPos + new Vector3(x, y, 0f) * (shakeAmount * noise);
                 timer += Time.deltaTime;
 
                 if (WorldWideScripts.Chance(50))

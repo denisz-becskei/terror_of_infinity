@@ -19,7 +19,7 @@ public class ChromaticExplosion : MonoBehaviour
         else
         {
             killZones = KillZoneFinder().ToArray();
-            AudioSource audioSource = killZones[WorldWideScripts.GetTotallyRandomNumberBetween(0, killZones.Length)].AddComponent<AudioSource>();
+            AudioSource audioSource = killZones[WorldWideScripts.GetPureRandomNumberBetween(0, killZones.Length)].AddComponent<AudioSource>();
             audioSource.clip = laserClip;
             audioSource.Play();
 
