@@ -1,1 +1,1 @@
-# Terror of Infinity
+# Terrors of Infinity
